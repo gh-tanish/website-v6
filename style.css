@@ -7,11 +7,19 @@
 /* =========================
    2. BASE / GLOBAL STYLES
 ========================= */
+html {
+  height: 100%;
+  background: #0b0b0f;
+}
+
 body {
-  font-family: 'Space Grotesk', sans-serif;
+  min-height: 100vh;
   margin: 0;
-  background: linear-gradient(to bottom, #0b0b0f, #11131a);
+
+  font-family: 'Space Grotesk', sans-serif;
   color: #e6e6e6;
+
+  background: linear-gradient(to bottom, #0b0b0f, #11131a);
 }
 
 main {

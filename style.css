@@ -9,6 +9,10 @@
    2. GLOBAL STYLES
 ========================= */
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   background: #0b0b0f;
@@ -29,28 +33,33 @@ body {
   overflow-x: hidden;
 }
 
+
+/* =========================
+   3. PAGE WRAPPER FIX
+========================= */
+
 main {
   max-width: 1450px;
   margin: auto;
-  padding: 0 40px;
+  padding: 0 24px;
   line-height: 1.8;
 }
 
 
 /* =========================
-   3. STRUCTURE SYSTEM
+   4. STRUCTURE SYSTEM
 ========================= */
 
 .boxed {
   max-width: 1300px;
   margin: 40px auto;
-  padding: 30px;
+  padding: 0 24px;
 }
 
 .section-title {
   max-width: 1300px;
   margin: 60px auto 10px auto;
-  padding: 0 30px;
+  padding: 0 24px;
 }
 
 .section-title h3 {
@@ -63,7 +72,7 @@ main {
 
 
 /* =========================
-   4. HEADER
+   5. HEADER
 ========================= */
 
 header {
@@ -72,24 +81,18 @@ header {
   z-index: 1000;
 
   backdrop-filter: blur(14px);
-
   background: rgba(10, 12, 18, 0.8);
 
-  padding: 1.4rem;
-
+  padding: 1.2rem 1rem;
   text-align: center;
 
-  box-shadow:
-    0 0 25px rgba(80,100,255,0.08);
+  box-shadow: 0 0 25px rgba(80,100,255,0.08);
 }
 
 header h1 {
   margin: 0;
-
   font-size: 2.7rem;
   font-weight: 700;
-
-  letter-spacing: 1px;
 
   background: linear-gradient(
     90deg,
@@ -100,29 +103,35 @@ header h1 {
   );
 
   background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  animation: gradientShift 7s ease infinite;
+  text-shadow: 0 0 18px rgba(155,125,255,0.25);
 }
 
 
 /* =========================
-   5. NAVIGATION
+   6. NAVIGATION
 ========================= */
 
 nav {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 nav a {
   color: #d0d7ff;
-  margin: 0 16px;
   text-decoration: none;
   font-weight: 500;
   position: relative;
   transition: 0.3s ease;
+  padding: 6px 10px;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -134,7 +143,7 @@ nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px;
+  bottom: -6px;
   width: 0%;
   height: 2px;
   background: linear-gradient(90deg, #7aa2ff, #9b7dff);
@@ -146,16 +155,13 @@ nav a:hover::after {
 }
 
 
-/* ✅ FIXED GRADIENT LINE (NOW PROPERLY AT BOTTOM OF NAV AREA) */
-
+/* gradient line */
 header::after {
   content: "";
   display: block;
-
   height: 3px;
   width: 100%;
-
-  margin-top: 14px;
+  margin-top: 12px;
 
   background: linear-gradient(
     90deg,
@@ -168,21 +174,16 @@ header::after {
   background-size: 300% 300%;
   animation: gradientShift 7s ease infinite;
 
-  opacity: 0.65;
-
-  box-shadow: 0 0 14px rgba(155,125,255,0.35);
+  opacity: 0.6;
 }
 
 
 /* =========================
-   6. HERO SECTION
+   7. HERO
 ========================= */
 
 .hero-main {
-  min-height: auto;
-  display: flex;
-  align-items: flex-start;
-  padding: 50px 0 20px 0;
+  padding: 40px 0 20px 0;
 }
 
 .hero-content {
@@ -209,39 +210,38 @@ header::after {
 
 .hero-description {
   max-width: 680px;
-  font-size: 0.85rem;
-  color: rgba(184, 191, 214, 0.65);
-  line-height: 1.9;
-  font-weight: 300;
+  font-size: 0.9rem;
+  color: rgba(184, 191, 214, 0.7);
 }
 
 
 /* =========================
-   7. DOMAIN CARDS
+   8. CARDS
 ========================= */
 
 .card-container {
   display: flex;
   justify-content: center;
-  gap: 28px;
+  gap: 22px;
   flex-wrap: wrap;
   margin-top: 40px;
 }
 
 .card {
-  width: 210px;
+  flex: 1 1 200px;
+  max-width: 240px;
+
   min-height: 210px;
 
-  padding: 24px;
+  padding: 22px;
 
   border-radius: 26px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(28, 32, 46, 0.95),
-      rgba(14, 16, 24, 0.95)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(28, 32, 46, 0.95),
+    rgba(14, 16, 24, 0.95)
+  );
 
   border: 1px solid rgba(120,130,255,0.15);
 
@@ -250,106 +250,63 @@ header::after {
 
   transition: all 0.35s ease;
 
-  box-shadow:
-    0 0 25px rgba(80,100,255,0.08),
-    inset 0 0 20px rgba(255,255,255,0.02);
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(140,120,255,0.45);
-  box-shadow:
-    0 0 35px rgba(120,100,255,0.22),
-    0 0 60px rgba(70,90,255,0.12);
-}
-
-.card h3 {
-  margin-top: 0;
-  font-size: 1.6rem;
-
-  background: linear-gradient(90deg, #7aa2ff, #a68cff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.card p {
-  color: #b8bfd6;
-  line-height: 1.7;
-}
-
-
-/* =========================
-   8. FEATURE SECTION
-========================= */
-
-.feature-section {
-  display: flex;
-  gap: 28px;
-  margin-top: 60px;
-  flex-wrap: wrap;
-}
-
-.feature-box {
-  flex: 1;
-  min-width: 320px;
-
-  padding: 38px;
-
-  border-radius: 28px;
-
-  background: rgba(12, 14, 20, 0.92);
-
-  border: 1px solid rgba(120,130,255,0.12);
-
   position: relative;
   overflow: hidden;
-
-  box-shadow: 0 0 30px rgba(0,0,0,0.35);
 }
 
-.feature-box::before {
+/* ✅ RESTORED HOVER GLOW */
+.card::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background: radial-gradient(
     circle at top left,
-    rgba(120,140,255,0.10),
-    transparent 60%
+    rgba(255,79,216,0.18),
+    rgba(155,125,255,0.12),
+    transparent 70%
   );
 
-  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
-.feature-box h3,
-.feature-box p,
-.feature-box a {
-  position: relative;
-  z-index: 1;
+.card:hover::before {
+  opacity: 1;
 }
 
-.feature-box h3 {
-  margin-top: 0;
-  font-size: 1.7rem;
-  color: #dce3ff;
-}
-
-.feature-box p {
-  color: #bcc5df;
-  line-height: 1.8;
-}
-
-.feature-box a {
-  display: inline-block;
-  margin-top: 20px;
-  color: #9b7dff;
-  text-decoration: none;
-  font-weight: 600;
+.card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(140,120,255,0.45);
+  box-shadow: 0 0 40px rgba(120,100,255,0.2);
 }
 
 
 /* =========================
-   9. QUOTE SECTION
+   9. FEATURE SECTION
+========================= */
+
+.feature-section {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+
+.feature-box {
+  flex: 1 1 320px;
+  padding: 32px;
+
+  border-radius: 28px;
+
+  background: rgba(12, 14, 20, 0.92);
+
+  border: 1px solid rgba(120,130,255,0.12);
+}
+
+
+/* =========================
+   10. QUOTE SECTION (RESTORED)
 ========================= */
 
 .quote-section {
@@ -359,36 +316,50 @@ header::after {
 }
 
 .quote-section p {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   line-height: 1.6;
-  color: #dfe5ff;
+  color: #e7eaff;
   max-width: 900px;
   margin: auto;
+  text-shadow: 0 0 18px rgba(155,125,255,0.15);
 }
 
 .quote-section span {
   display: block;
-  margin-top: 20px;
-  color: #8d96b8;
-}
-
-
-/* =========================
-   10. FOOTER
-========================= */
-
-footer {
-  padding: 35px 20px;
-  background: rgba(10,10,14,0.95);
-  border-top: 1px solid rgba(120,120,255,0.12);
-  text-align: center;
-  color: #8d93ab;
+  margin-top: 18px;
+  color: #9aa3c2;
   font-size: 0.95rem;
 }
 
 
 /* =========================
-   11. ANIMATIONS
+   11. FOOTER (RESTORED)
+========================= */
+
+footer {
+  padding: 40px 20px;
+  background: rgba(10,10,14,0.95);
+  border-top: 1px solid rgba(120,120,255,0.15);
+
+  text-align: center;
+  color: #8d93ab;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  box-shadow: 0 -10px 30px rgba(80,100,255,0.08);
+}
+
+
+/* =========================
+   12. FIX
+========================= */
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+/* =========================
+   13. ANIMATION
 ========================= */
 
 @keyframes gradientShift {

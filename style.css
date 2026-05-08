@@ -237,11 +237,8 @@ header::after {
 
   border-radius: 26px;
 
-  background: linear-gradient(
-    145deg,
-    rgba(28, 32, 46, 0.95),
-    rgba(14, 16, 24, 0.95)
-  );
+  /* ✅ CLEAN BASE (no directional gradient) */
+  background: rgba(18, 20, 28, 0.92);
 
   border: 1px solid rgba(120,130,255,0.15);
 
@@ -252,9 +249,11 @@ header::after {
 
   position: relative;
   overflow: hidden;
+
+  box-shadow: 0 0 18px rgba(80, 120, 255, 0.10);
 }
 
-/* ✅ RESTORED HOVER GLOW */
+
 .card::before {
   content: "";
   position: absolute;
@@ -262,9 +261,8 @@ header::after {
 
   background: radial-gradient(
     circle at top left,
-    rgba(255,79,216,0.18),
-    rgba(155,125,255,0.12),
-    transparent 70%
+    rgba(80, 130, 255, 0.10),
+    transparent 60%
   );
 
   opacity: 0;
@@ -275,11 +273,20 @@ header::after {
   opacity: 1;
 }
 
+
 .card:hover {
   transform: translateY(-10px);
-  border-color: rgba(140,120,255,0.45);
-  box-shadow: 0 0 40px rgba(120,100,255,0.2);
+  border-color: rgba(90, 140, 255, 0.45);
+
+  box-shadow:
+    0 0 20px rgba(80, 130, 255, 0.25),
+    0 0 45px rgba(70, 120, 255, 0.12);
 }
+
+.card:hover::before {
+  opacity: 1;
+}
+
 
 .card h3 {
   margin-top: 0;

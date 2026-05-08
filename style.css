@@ -203,7 +203,7 @@ nav a:hover::after {
 }
 
 .card {
-  width: 220px;
+  width: 210px;
   min-height: 210px;
 
   padding: 24px;

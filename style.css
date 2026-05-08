@@ -281,6 +281,17 @@ header::after {
   box-shadow: 0 0 40px rgba(120,100,255,0.2);
 }
 
+.card h3 {
+  margin-top: 0;
+  font-size: 1.55rem;
+  font-weight: 600;
+
+  background: linear-gradient(90deg, #7aa2ff, #a68cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  letter-spacing: 0.3px;
+}
 
 /* =========================
    9. FEATURE SECTION

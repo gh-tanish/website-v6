@@ -38,7 +38,7 @@ main {
 
 
 /* =========================
-   3. STRUCTURE SYSTEM (NEW)
+   3. STRUCTURE SYSTEM
 ========================= */
 
 .boxed {
@@ -78,8 +78,6 @@ header {
   padding: 1.4rem;
 
   text-align: center;
-
-  border-bottom: 1px solid rgba(120,120,255,0.15);
 
   box-shadow:
     0 0 25px rgba(80,100,255,0.08);
@@ -145,6 +143,34 @@ nav a::after {
 
 nav a:hover::after {
   width: 100%;
+}
+
+
+/* ✅ FIXED GRADIENT LINE (NOW PROPERLY AT BOTTOM OF NAV AREA) */
+
+header::after {
+  content: "";
+  display: block;
+
+  height: 3px;
+  width: 100%;
+
+  margin-top: 14px;
+
+  background: linear-gradient(
+    90deg,
+    #ff4fd8,
+    #9b7dff,
+    #4fa3ff,
+    #ff4fd8
+  );
+
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
+  opacity: 0.65;
+
+  box-shadow: 0 0 14px rgba(155,125,255,0.35);
 }
 
 

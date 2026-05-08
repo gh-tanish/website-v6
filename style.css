@@ -1,0 +1,260 @@
+/* =========================
+   1. IMPORTS
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+
+/* =========================
+   2. BASE / GLOBAL STYLES
+========================= */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #0b0b0f, #11131a);
+  color: #e6e6e6;
+}
+
+main {
+  max-width: 1500px;
+  margin: 20px auto;
+  padding: 0 40px;
+  line-height: 1.8;
+}
+
+
+/* =========================
+   3. HEADER
+========================= */
+header {
+  background: rgba(15, 17, 24, 0.95);
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(120, 120, 255, 0.2);
+  box-shadow: 0 0 20px rgba(90, 120, 255, 0.15);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #ff4fd8,
+    #9b7dff,
+    #4fa3ff,
+    #ff4fd8
+  );
+
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientShift 6s ease infinite;
+}
+
+
+
+/* =========================
+   4. NAVIGATION
+========================= */
+nav {
+  margin-top: 1rem;
+}
+
+nav a {
+  color: #d0d7ff;
+  margin: 0 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #9b7dff;
+  text-shadow: 0 0 8px rgba(155, 125, 255, 0.7);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #7aa2ff, #9b7dff);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================
+   5. HERO SECTION
+========================= */
+.hero {
+  margin-bottom: 70px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  line-height: 1.2;
+
+  background: linear-gradient(90deg, #7aa2ff, #a68cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  max-width: 750px;
+  font-size: 1.15rem;
+  color: #bfc7df;
+  line-height: 1.8;
+}
+
+
+/* =========================
+   6. CARDS (HOME PAGE)
+========================= */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.card {
+  width: 220px;
+  min-height: 220px;
+  padding: 25px;
+
+  border-radius: 24px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(25, 28, 40, 0.95),
+    rgba(15, 16, 24, 0.95)
+  );
+
+  border: 1px solid rgba(120, 130, 255, 0.15);
+
+  text-decoration: none;
+  color: #e6e6e6;
+
+  transition: all 0.35s ease;
+
+  box-shadow:
+    0 0 20px rgba(80, 100, 255, 0.08),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(140, 120, 255, 0.45);
+
+  box-shadow:
+    0 0 30px rgba(120, 100, 255, 0.25),
+    0 0 60px rgba(70, 90, 255, 0.12);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+
+  background: linear-gradient(90deg, #7aa2ff, #a68cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card p {
+  color: #b9bfd6;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   7. TOPIC GRID (SUB PAGES)
+========================= */
+.topic-grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.topic-card {
+  flex: 1;
+  min-width: 250px;
+  padding: 30px;
+
+  border-radius: 24px;
+
+  background: rgba(20, 24, 35, 0.9);
+
+  border: 1px solid rgba(120, 130, 255, 0.15);
+
+  box-shadow: 0 0 25px rgba(80, 100, 255, 0.08);
+
+  transition: 0.3s ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(140, 120, 255, 0.4);
+
+  box-shadow: 0 0 35px rgba(120, 100, 255, 0.2);
+}
+
+.topic-card h3 {
+  margin-top: 0;
+  color: #dce3ff;
+  font-size: 1.4rem;
+}
+
+.topic-card p {
+  color: #aeb7d0;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   8. FOOTER
+========================= */
+footer {
+  margin-top: 80px;
+  padding: 30px 20px;
+
+  background: rgba(10, 10, 14, 0.95);
+  border-top: 1px solid rgba(120, 120, 255, 0.15);
+
+  text-align: center;
+
+  color: #8d93ab;
+  font-size: 0.95rem;
+
+  box-shadow: 0 -5px 20px rgba(80, 100, 255, 0.08);
+}
+
+
+/* =========================
+   A. GRADIENT TITLE
+========================= */
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

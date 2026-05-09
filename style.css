@@ -576,6 +576,40 @@ footer::after {
 
 
 /* =========================
+   MOBILE HEADER FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  .brand {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .site-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  header h1,
+  .page-title,
+  .universe-title {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  nav {
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+    padding: 4px 6px;
+  }
+}
+
+
+/* =========================
    ANIMATION
 ========================= */
 

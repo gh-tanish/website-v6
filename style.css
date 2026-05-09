@@ -6,36 +6,94 @@
 
 
 /* =========================
-   2. GLOBAL STYLES
+   2. THEME SYSTEM
+========================= */
+
+:root {
+  /* Core theme gradients */
+  --scientia: linear-gradient(90deg, #4fa3ff, #7aa2ff, #9b7dff);
+  --vitalis: linear-gradient(90deg, #00ffa3, #5dffb1, #00e6ff);
+  --logos: linear-gradient(90deg, #ffb86b, #ffd36b, #ff8f5a);
+  --sensus: linear-gradient(90deg, #c38bff, #ff7ad9, #9b7dff);
+
+  /* Glow variants */
+  --glow-scientia: rgba(122,162,255,0.25);
+  --glow-vitalis: rgba(93,255,177,0.22);
+  --glow-logos: rgba(255,184,107,0.22);
+  --glow-sensus: rgba(195,139,255,0.22);
+
+  /* Default fallback */
+  --theme: var(--scientia);
+  --glow: var(--glow-scientia);
+
+  /* UNIVERSAL MASTER TITLE GRADIENT */
+  --universe-gradient: linear-gradient(
+    90deg,
+    #ff4fd8,
+    #9b7dff,
+    #4fa3ff,
+    #ff4fd8
+  );
+}
+
+/* AUTO PAGE THEMES */
+body.scientia {
+  --theme: var(--scientia);
+  --glow: var(--glow-scientia);
+}
+
+body.vitalis {
+  --theme: var(--vitalis);
+  --glow: var(--glow-vitalis);
+}
+
+body.logos {
+  --theme: var(--logos);
+  --glow: var(--glow-logos);
+}
+
+body.sensus {
+  --theme: var(--sensus);
+  --glow: var(--glow-sensus);
+}
+
+.theme-line {
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+}
+
+/* =========================
+   3. GLOBAL STYLES
 ========================= */
 
 * {
   box-sizing: border-box;
 }
 
-html {
+html, body {
   height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #e6e6e6;
+}
+
+html {
   background: #0b0b0f;
 }
 
 body {
   min-height: 100vh;
-  margin: 0;
-
-  font-family: 'Space Grotesk', sans-serif;
-  color: #e6e6e6;
-
   background:
     radial-gradient(circle at top, rgba(120,120,255,0.08), transparent 40%),
     radial-gradient(circle at bottom, rgba(155,125,255,0.08), transparent 40%),
     linear-gradient(to bottom, #0b0b0f, #11131a);
-
-  overflow-x: hidden;
 }
 
 
 /* =========================
-   3. PAGE WRAPPER FIX
+   4. PAGE WRAPPER
 ========================= */
 
 main {
@@ -43,31 +101,6 @@ main {
   margin: auto;
   padding: 0 24px;
   line-height: 1.8;
-}
-
-
-/* =========================
-   4. STRUCTURE SYSTEM
-========================= */
-
-.boxed {
-  max-width: 1300px;
-  margin: 40px auto;
-  padding: 0 24px;
-}
-
-.section-title {
-  max-width: 1300px;
-  margin: 60px auto 10px auto;
-  padding: 0 24px;
-}
-
-.section-title h3 {
-  color: #cfd6ff;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.75;
 }
 
 
@@ -89,31 +122,48 @@ header {
   box-shadow: 0 0 25px rgba(80,100,255,0.08);
 }
 
-header h1 {
+/* =========================
+   UNIVERSAL TITLE (FIXED + RESTORED)
+========================= */
+
+/* =========================
+   UNIVERSAL TITLE (HOME ONLY)
+========================= */
+
+.universe-title {
   margin: 0;
   font-size: 2.7rem;
   font-weight: 700;
 
-  background: linear-gradient(
-    90deg,
-    #ff4fd8,
-    #9b7dff,
-    #4fa3ff,
-    #ff4fd8
-  );
-
+  background: var(--universe-gradient);
   background-size: 300% 300%;
   animation: gradientShift 7s ease infinite;
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  text-shadow: 0 0 18px rgba(155,125,255,0.25);
 }
 
 
 /* =========================
-   6. NAVIGATION
+   PAGE TITLES (THEMED SECTIONS)
+========================= */
+
+.page-title {
+  margin: 0;
+  font-size: 2.7rem;
+  font-weight: 700;
+
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================
+   NAVIGATION
 ========================= */
 
 nav {
@@ -129,9 +179,8 @@ nav a {
   text-decoration: none;
   font-weight: 500;
   position: relative;
-  transition: 0.3s ease;
   padding: 6px 10px;
-  white-space: nowrap;
+  transition: 0.3s ease;
 }
 
 nav a:hover {
@@ -139,6 +188,7 @@ nav a:hover {
   text-shadow: 0 0 12px rgba(155,125,255,0.7);
 }
 
+/* BASE LINE (ALL PAGES) */
 nav a::after {
   content: "";
   position: absolute;
@@ -146,16 +196,23 @@ nav a::after {
   bottom: -6px;
   width: 0%;
   height: 2px;
-  background: linear-gradient(90deg, #7aa2ff, #9b7dff);
+
+  background: var(--theme);
+  background-size: 300% 300%;
   transition: width 0.3s ease;
 }
 
+/* hover */
 nav a:hover::after {
   width: 100%;
 }
 
+/* INDEX PAGE (UNIVERSE GRADIENT OVERRIDE) */
+body.home {
+  --theme: var(--universe-gradient);
+}
 
-/* gradient line */
+/* HEADER LINE */
 header::after {
   content: "";
   display: block;
@@ -163,82 +220,53 @@ header::after {
   width: 100%;
   margin-top: 12px;
 
-  background: linear-gradient(
-    90deg,
-    #ff4fd8,
-    #9b7dff,
-    #4fa3ff,
-    #ff4fd8
-  );
-
+  background: var(--universe-gradient);
   background-size: 300% 300%;
   animation: gradientShift 7s ease infinite;
 
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
+header::after {
+  background: var(--theme);
+}
 
 /* =========================
-   7. HERO
-========================= */
-
-/* =========================
-   HERO PANEL
+   6. HERO
 ========================= */
 
 .hero-main {
   margin-top: 30px;
-
   padding: 48px;
-
   border-radius: 34px;
+
+  background: rgba(20, 24, 36, 0.92);
+  border: 1px solid rgba(120,130,255,0.12);
 
   position: relative;
   overflow: hidden;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(20, 24, 36, 0.92),
-      rgba(10, 12, 20, 0.96)
-    );
-
-  border: 1px solid rgba(120,130,255,0.12);
-
-  box-shadow:
-    0 0 35px rgba(80,100,255,0.08);
-
-  backdrop-filter: blur(10px);
+  box-shadow: 0 0 35px rgba(80,100,255,0.08);
 }
 
-
-/* subtle blue atmospheric glow */
 .hero-main::before {
   content: "";
-
   position: absolute;
   inset: 0;
 
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(80,130,255,0.10),
-      transparent 40%
-    );
+  background: radial-gradient(
+    circle at top left,
+    var(--glow),
+    transparent 40%
+  );
 
-  pointer-events: none;
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
 }
-
 
 .hero-content {
   position: relative;
   z-index: 2;
-
   max-width: 900px;
-}
-
-.hero-content {
-  max-width: 950px;
 }
 
 .hero-tag {
@@ -249,25 +277,19 @@ header::after {
 }
 
 .hero h2 {
-  font-size: 1.4rem;
-  font-weight: 500;
-  margin-bottom: 12px;
-  line-height: 1.4;
-
-  background: linear-gradient(90deg, #7aa2ff, #a68cff);
+  background: var(--theme);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-description {
-  max-width: 680px;
   font-size: 0.9rem;
   color: rgba(184, 191, 214, 0.7);
 }
 
 
 /* =========================
-   8. CARDS
+   7. CARDS
 ========================= */
 
 .card-container {
@@ -283,27 +305,23 @@ header::after {
   max-width: 240px;
 
   min-height: 210px;
-
   padding: 22px;
 
   border-radius: 26px;
 
-  /* ✅ CLEAN BASE (no directional gradient) */
   background: rgba(18, 20, 28, 0.92);
-
   border: 1px solid rgba(120,130,255,0.15);
 
   text-decoration: none;
   color: #e6e6e6;
 
-  transition: all 0.35s ease;
-
   position: relative;
   overflow: hidden;
 
+  transition: all 0.35s ease;
+
   box-shadow: 0 0 18px rgba(80, 120, 255, 0.10);
 }
-
 
 .card::before {
   content: "";
@@ -312,9 +330,12 @@ header::after {
 
   background: radial-gradient(
     circle at top left,
-    rgba(80, 130, 255, 0.10),
+    var(--glow),
     transparent 60%
   );
+
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
 
   opacity: 0;
   transition: opacity 0.35s ease;
@@ -324,35 +345,102 @@ header::after {
   opacity: 1;
 }
 
-
 .card:hover {
   transform: translateY(-10px);
   border-color: rgba(90, 140, 255, 0.45);
 
   box-shadow:
-    0 0 20px rgba(80, 130, 255, 0.25),
-    0 0 45px rgba(70, 120, 255, 0.12);
+    0 0 25px var(--glow),
+    0 0 55px rgba(70, 120, 255, 0.12);
 }
-
-.card:hover::before {
-  opacity: 1;
-}
-
 
 .card h3 {
-  margin-top: 0;
-  font-size: 1.55rem;
-  font-weight: 600;
-
-  background: linear-gradient(90deg, #7aa2ff, #a68cff);
+  background: var(--theme);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  letter-spacing: 0.3px;
 }
 
 /* =========================
-   9. FEATURE SECTION
+   TOPIC GRID (NEW SYSTEM)
+========================= */
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+
+  margin-top: 40px;
+}
+
+/* CARD STYLE */
+.topic-card {
+  display: block;
+  padding: 22px;
+
+  border-radius: 26px;
+
+  background: rgba(18, 20, 28, 0.92);
+  border: 1px solid rgba(120,130,255,0.15);
+
+  text-decoration: none;
+  color: #e6e6e6;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.35s ease;
+
+  box-shadow: 0 0 18px rgba(80, 120, 255, 0.10);
+}
+
+/* THEME GLOW */
+.topic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top left,
+    var(--glow),
+    transparent 60%
+  );
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.topic-card:hover::before {
+  opacity: 1;
+}
+
+/* HOVER EFFECT */
+.topic-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(90, 140, 255, 0.45);
+
+  box-shadow:
+    0 0 25px var(--glow),
+    0 0 55px rgba(70, 120, 255, 0.12);
+}
+
+/* TITLE INSIDE CARD */
+.topic-card h3 {
+  margin-top: 0;
+
+  background: var(--theme);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* TEXT INSIDE CARD */
+.topic-card p {
+  color: rgba(220, 225, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   8. FEATURE BOXES
 ========================= */
 
 .feature-section {
@@ -367,7 +455,6 @@ header::after {
   padding: 32px;
 
   border-radius: 28px;
-
   background: rgba(12, 14, 20, 0.92);
 
   border: 1px solid rgba(120,130,255,0.12);
@@ -375,7 +462,7 @@ header::after {
 
 
 /* =========================
-   10. QUOTE SECTION (RESTORED)
+   9. QUOTE
 ========================= */
 
 .quote-section {
@@ -386,49 +473,82 @@ header::after {
 
 .quote-section p {
   font-size: 1.9rem;
-  line-height: 1.6;
   color: #e7eaff;
   max-width: 900px;
   margin: auto;
-  text-shadow: 0 0 18px rgba(155,125,255,0.15);
 }
 
 .quote-section span {
   display: block;
   margin-top: 18px;
   color: #9aa3c2;
-  font-size: 0.95rem;
 }
 
 
+
+
+
+
+/* ensures last section always breathes */
+main > section:last-child {
+  margin-bottom: 60px;
+}
+
 /* =========================
-   11. FOOTER (RESTORED)
+   10. FOOTER (THEMED FIX)
 ========================= */
 
 footer {
   padding: 40px 20px;
-  background: rgba(10,10,14,0.95);
-  border-top: 1px solid rgba(120,120,255,0.15);
+
+  /* instead of fixed black */
+  background: rgba(12, 14, 20, 0.85);
+
+  border-top: 1px solid rgba(120,130,255,0.15);
 
   text-align: center;
-  color: #8d93ab;
+  color: rgba(220, 225, 255, 0.7);
+
   font-size: 0.9rem;
-  letter-spacing: 1px;
-  box-shadow: 0 -10px 30px rgba(80,100,255,0.08);
+
+  position: relative;
+  overflow: hidden;
 }
 
+/* subtle themed glow like your cards */
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-/* =========================
-   12. FIX
-========================= */
+  background: radial-gradient(
+    circle at top,
+    var(--glow),
+    transparent 60%
+  );
 
-html, body {
-  overflow-x: hidden;
+  opacity: 0.25;
+  pointer-events: none;
 }
 
+/* optional: animated top line */
+footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+  opacity: 0.8;
+}
 
 /* =========================
-   13. ANIMATION
+   ANIMATION
 ========================= */
 
 @keyframes gradientShift {

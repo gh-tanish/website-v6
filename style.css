@@ -575,6 +575,34 @@ footer::after {
 
 
 
+
+/* =========================
+   MOBILE CARD FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  .card-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card {
+    max-width: 100%;
+    width: 100%;
+
+    min-height: auto;
+  }
+
+  .topic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-card {
+    width: 100%;
+  }
+}
+
 /* =========================
    MOBILE HEADER FIX
 ========================= */

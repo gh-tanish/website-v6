@@ -388,6 +388,48 @@ header::after {
   -webkit-text-fill-color: transparent;
 }
 
+
+/* =========================
+   CARD GIF BACKGROUNDS
+========================= */
+
+.scientia-card,
+.vitalis-card,
+.logos-card,
+.sensus-card {
+  position: relative;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* GIFS */
+.scientia-card {
+  background-image:
+    linear-gradient(rgba(10,10,16,0.72), rgba(10,10,16,0.72)),
+    url("images/scientia.GIF");
+}
+
+.vitalis-card {
+  background-image:
+    linear-gradient(rgba(10,10,16,0.72), rgba(10,10,16,0.72)),
+    url("images/vitalis.GIF");
+}
+
+.logos-card {
+  background-image:
+    linear-gradient(rgba(10,10,16,0.72), rgba(10,10,16,0.72)),
+    url("images/logos.GIF");
+}
+
+.sensus-card {
+  background-image:
+    linear-gradient(rgba(10,10,16,0.72), rgba(10,10,16,0.72)),
+    url("images/sensus.GIF");
+}
+
+
 /* =========================
    TOPIC GRID (NEW SYSTEM)
 ========================= */

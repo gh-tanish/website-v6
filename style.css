@@ -161,6 +161,32 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
+/* =========================
+   BRAND SYSTEM
+========================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* LOGO */
+.site-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 0 10px rgba(155,125,255,0.35));
+
+  transition: transform 0.35s ease;
+}
+
+.site-logo:hover {
+  transform: scale(1.06);
+}
 
 /* =========================
    NAVIGATION
@@ -546,6 +572,8 @@ footer::after {
   animation: gradientShift 7s ease infinite;
   opacity: 0.8;
 }
+
+
 
 /* =========================
    ANIMATION

@@ -1159,7 +1159,7 @@ footer::after {
 ========================= */
 
 .concept-card {
-  background-image: url("../../images/cards.jpg");
+  background-image: url("images/cards.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

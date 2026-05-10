@@ -11,10 +11,70 @@
 
 :root {
   /* Core theme gradients */
-  --scientia: linear-gradient(90deg, #4fa3ff, #7aa2ff, #9b7dff);
-  --vitalis: linear-gradient(90deg, #00ffa3, #5dffb1, #00e6ff);
-  --logos: linear-gradient(90deg, #ffb86b, #ffd36b, #ff8f5a);
-  --sensus: linear-gradient(90deg, #c38bff, #ff7ad9, #9b7dff);
+  
+/* =========================
+   SCIENTIA
+   (space → quantum → energy flow)
+========================= */
+
+--scientia: linear-gradient(
+  120deg,
+  #0b6bff,   /* deep space */
+  #2f8cff,   /* softened blue */
+  #5aa6ff,   /* light transition blue */
+  #7a90ff,   /* blue-violet bridge */
+  #8a7dff,   /* quantum violet */
+  #6c9dff    /* return-blue glow (prevents cyan jump) */
+);
+
+
+/* =========================
+   VITALIS
+   (organic growth → bio energy → fluid systems)
+========================= */
+
+--vitalis: linear-gradient(
+  120deg,
+  #b9ff3a,   /* soft lime growth */
+  #8cf65a,   /* green transition */
+  #4fffa3,   /* balanced vitality */
+  #2de6b8,   /* aqua-green bridge */
+  #2fdcc7,   /* aquatic flow */
+  #3acfff    /* soft cyan (no harsh jump) */
+);
+
+
+/* =========================
+   LOGOS
+   (clarity → reasoning → structured light)
+========================= */
+
+--logos: linear-gradient(
+  120deg,
+  #ffffff,   /* clarity base */
+  #fff5e6,   /* soft diffusion */
+  #ffe3b8,   /* gentle gold */
+  #ffd39a,   /* warm logic */
+  #ffc085,   /* structured reasoning */
+  #ffe6c4,   /* reflection bridge */
+  #ffffff    /* return to clarity */
+);
+
+
+/* =========================
+   SENSUS
+   (mind → emotion → perception → awareness)
+========================= */
+
+--sensus: linear-gradient(
+  120deg,
+  #b18cff,   /* thought field */
+  #c38bff,   /* cognition core */
+  #d77cff,   /* softened purple-pink */
+  #ff86d6,   /* emotional perception */
+  #ffaadf,   /* awareness bloom */
+  #caa6ff    /* memory return bridge */
+);
 
   /* Glow variants */
   --glow-scientia: rgba(122,162,255,0.25);
@@ -188,6 +248,12 @@ header {
   transform: scale(1.06);
 }
 
+.theme-line {
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+}
+
 /* =========================
    NAVIGATION
 ========================= */
@@ -210,8 +276,15 @@ nav a {
 }
 
 nav a:hover {
-  color: #b69cff;
-  text-shadow: 0 0 12px rgba(155,125,255,0.7);
+  color: transparent;
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 0 12px var(--glow);
 }
 
 /* BASE LINE (ALL PAGES) */
@@ -220,15 +293,17 @@ nav a::after {
   position: absolute;
   left: 0;
   bottom: -6px;
+
   width: 0%;
   height: 2px;
 
   background: var(--theme);
   background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
   transition: width 0.3s ease;
 }
 
-/* hover */
 nav a:hover::after {
   width: 100%;
 }
@@ -246,15 +321,11 @@ header::after {
   width: 100%;
   margin-top: 12px;
 
-  background: var(--universe-gradient);
+  background: var(--theme);
   background-size: 300% 300%;
   animation: gradientShift 7s ease infinite;
 
-  opacity: 0.75;
-}
-
-header::after {
-  background: var(--theme);
+  opacity: 0.8;
 }
 
 /* =========================
@@ -293,13 +364,86 @@ header::after {
   position: relative;
   z-index: 2;
   max-width: 900px;
+
+  text-align: left;
 }
 
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* =========================
+   HERO TAG + LOGO
+========================= */
+
+
 .hero-tag {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+
+  text-align: left;
+}
+
+.hero-tag span {
+  display: block;
+
   color: #97a4cf;
+
   letter-spacing: 2px;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
+
+  line-height: 1.5;
+}
+
+
+/* HERO LOGO */
+
+.hero-logo {
+  width: 60px;
+  height: 60px;
+
+  object-fit: contain;
+  flex-shrink: 0;
+
+  opacity: 0.95;
+
+  filter:
+    drop-shadow(0 0 10px rgba(155,125,255,0.35));
+
+  transition: transform 0.35s ease;
+}
+
+.hero-logo:hover {
+  transform: scale(1.08);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .hero-tag {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .hero-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+}
+
+.hero-logo:hover {
+  transform: scale(1.08);
 }
 
 .hero h2 {
@@ -382,12 +526,50 @@ header::after {
     0 0 55px rgba(70, 120, 255, 0.12);
 }
 
-.card h3 {
-  background: var(--theme);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* =========================
+   CARD TITLE GRADIENT FIX (WORKING)
+========================= */
 
+  .card h3 {
+    display: inline-block;
+
+    background-image: var(--theme);
+    background-size: 300% 300%;
+    animation: gradientShift 7s ease infinite;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+  }
+
+body.home .card h3 {
+  display: inline-block;
+
+  /* Metallic blue gradient */
+  background: linear-gradient(
+    90deg,
+    #f8fbff,   /* near-white highlight */
+    #cfe6ff,   /* soft ice blue */
+    #8fbfff,   /* core steel blue */
+    #7fb8ff,   /* deeper blue */
+    #cfe6ff,   /* return highlight */
+    #ffffff    /* clean finish */
+  );
+
+  background-size: 200% 200%;
+  animation: gradientShift 10s linear infinite;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  text-shadow: 0 0 8px rgba(140, 180, 255, 0.12);
+}
 
 /* =========================
    CARD GIF BACKGROUNDS
@@ -680,7 +862,325 @@ footer::after {
   }
 }
 
+@media (max-width: 768px) {
 
+  .hero-tag {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-logo {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+
+
+
+
+
+/* =========================
+   ARTICLE LIST SYSTEM
+========================= */
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+/* =========================
+   ARTICLE ROW
+========================= */
+
+.article-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px 22px;
+
+  border-radius: 18px;
+
+  /* IMAGE BACKGROUND + DARK OVERLAY */
+  background-image:
+    linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
+    url("images/archive-cards.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 1px solid rgba(120,130,255,0.12);
+
+  text-decoration: none;
+  color: #e6e6e6;
+
+  transition: all 0.35s ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================
+   GLOW LAYER
+========================= */
+
+.article-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at left,
+    var(--glow),
+    transparent 65%
+  );
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.article-item:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.article-item:hover {
+  transform: translateX(8px);
+
+  border-color: rgba(140,160,255,0.45);
+
+  box-shadow:
+    0 0 18px var(--glow),
+    0 0 40px rgba(120,140,255,0.12);
+}
+
+/* =========================
+   TEXT BLOCK (LEFT SIDE)
+========================= */
+
+.article-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* title */
+.article-item h3 {
+  margin: 0;
+  font-size: 1.05rem;
+
+  background: var(--theme);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* description */
+.article-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(220, 225, 255, 0.7);
+  line-height: 1.5;
+}
+
+/* =========================
+   ACTION (RIGHT SIDE)
+========================= */
+
+.article-item span {
+  font-size: 0.9rem;
+  color: rgba(160, 180, 255, 0.8);
+
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+
+  position: relative;
+  z-index: 2;
+}
+
+.article-item:hover span {
+  transform: translateX(4px);
+}
+
+
+/* =========================
+   CONCEPT SYSTEM (CLEAN FINAL VERSION)
+========================= */
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+  margin-top: 35px;
+}
+
+/* =========================
+   CONCEPT CARD
+========================= */
+
+.concept-card {
+  display: block;
+  padding: 26px;
+
+  border-radius: 28px;
+
+  background: rgba(15, 17, 24, 0.88);
+  border: 1px solid rgba(120,130,255,0.12);
+
+  text-decoration: none;
+  color: #e6e6e6;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* glow layer */
+.concept-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top left,
+    var(--glow),
+    transparent 60%
+  );
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.concept-card:hover::before {
+  opacity: 1;
+}
+
+.concept-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 35px var(--glow);
+  border-color: rgba(140, 160, 255, 0.35);
+}
+
+/* =========================
+   CARD TITLE
+========================= */
+
+.concept-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.15rem;
+
+  background: var(--theme);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   CARD TEXT
+========================= */
+
+.concept-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  color: rgba(220, 225, 255, 0.75);
+}
+
+/* =========================
+   CTA LABEL
+========================= */
+
+.concept-card .read {
+  display: inline-block;
+  margin-top: 14px;
+
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+
+  color: rgba(160, 180, 255, 0.9);
+}
+
+/* =========================
+   CONCEPT HEADER
+========================= */
+
+.concept-header {
+  max-width: 900px;
+  margin: 55px auto 20px auto;
+  padding: 0 24px;
+
+  text-align: center;
+}
+
+.concept-header h3 {
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: rgba(200, 210, 255, 0.65);
+
+  margin: 0;
+}
+
+/* subtle divider under header */
+.concept-header::after {
+  content: "";
+  display: block;
+
+  width: 60px;
+  height: 2px;
+
+  margin: 12px auto 0 auto;
+
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
+  opacity: 0.7;
+}
+
+/* =========================
+   CONCEPT CARD BACKGROUND IMAGE
+========================= */
+
+.concept-card {
+  background-image: url("../../images/cards.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* DARK OVERLAY (so text stays readable) */
+.concept-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(10, 12, 18, 0.72);
+
+  z-index: 1;
+}
+
+/* ensure content stays above overlay */
+.concept-card > * {
+  position: relative;
+  z-index: 2;
+}
 /* =========================
    ANIMATION
 ========================= */

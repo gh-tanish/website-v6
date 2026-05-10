@@ -27,7 +27,7 @@ if (toggleBtn) {
 
       localStorage.setItem("theme", "dark");
 
-      toggleBtn.textContent = "☀ Light Mode";
+      toggleBtn.textContent = "𖤓 Light Mode";
     }
 
   });

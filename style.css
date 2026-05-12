@@ -945,6 +945,9 @@ footer::after {
   padding: 20px 22px;
   border-radius: 18px;
 
+  
+  --article-image: url("../../images/archive-cards.jpg");
+
   /* ONLY overlay now */
   background: linear-gradient(
     rgba(10, 12, 18, 0.78),
@@ -965,13 +968,20 @@ footer::after {
   position: absolute;
   inset: 0;
 
-  background-image: var(--article-image);
+  background-image:
+    linear-gradient(
+      rgba(10, 12, 18, 0.78),
+      rgba(10, 12, 18, 0.78)
+    ),
+    var(--article-image);
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   z-index: 0;
 }
+
 
 
 .article-item > * {
@@ -1012,6 +1022,13 @@ footer::after {
 
   position: relative;
   overflow: hidden;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 30px;
 }
 /* =========================
    GLOW LAYER

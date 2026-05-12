@@ -956,14 +956,9 @@ footer::after {
   padding: 20px 22px;
   border-radius: 18px;
 
-  /* SAFE STACK (Safari-friendly) */
   background-image:
     linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
-    url("images/archive-cards.jpg"); /* HARD fallback FIRST */
-
-  background-image:
-    linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
-    var(--article-image, url("images/archive-cards.jpg"));
+    var(--article-image, url("/images/archive-cards.jpg"));
 
   background-size: cover;
   background-position: center;
@@ -979,6 +974,7 @@ footer::after {
   position: relative;
   overflow: hidden;
 }
+
 /* =========================
    GLOW LAYER
 ========================= */
@@ -1455,17 +1451,13 @@ body.light-mode .article-section h3 {
    LIGHT MODE IMAGE OVERLAYS
 ========================= */
 
-body.light-mode .concept-card::after {
-  background: rgba(133, 133, 133, 0.45);
-}
-
 body.light-mode .article-item {
   background-image:
     linear-gradient(
       rgba(174, 180, 188, 0.904),
       rgba(115, 118, 121, 0.52)
     ),
-    var(--article-image);
+    var(--article-image, url("/images/archive-cards.jpg"));
 }
 
 

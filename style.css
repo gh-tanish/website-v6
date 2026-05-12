@@ -975,6 +975,14 @@ footer::after {
   overflow: hidden;
 }
 
+.article-psychoanalysis {
+  --bg-image: url("/images/psychoanalysis.jpg");
+}
+
+.article-halflife {
+  --bg-image: url("/images/halflife.jpg");
+}
+
 /* =========================
    GLOW LAYER
 ========================= */

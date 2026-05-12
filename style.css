@@ -956,11 +956,8 @@ footer::after {
   padding: 20px 22px;
   border-radius: 18px;
 
-  /* IMAGE SYSTEM (FIXED) */
-  background-image:
-    linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
-    var(--article-image);
-
+  /* IMAGE SYSTEM (iPad SAFE FIX) */
+  background-image: var(--article-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

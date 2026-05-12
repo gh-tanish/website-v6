@@ -954,13 +954,12 @@ footer::after {
   gap: 20px;
 
   padding: 20px 22px;
-
   border-radius: 18px;
 
-  /* IMAGE BACKGROUND + DARK OVERLAY */
+  /* IMAGE SYSTEM (FIXED) */
   background-image:
     linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
-    url("images/archive-cards.jpg");
+    var(--article-image);
 
   background-size: cover;
   background-position: center;
@@ -976,7 +975,6 @@ footer::after {
   position: relative;
   overflow: hidden;
 }
-
 /* =========================
    GLOW LAYER
 ========================= */
@@ -1035,10 +1033,47 @@ footer::after {
 .article-item h3 {
   margin: 0;
   font-size: 1.05rem;
+  font-weight: 800;
+
+  position: relative;
+  z-index: 2;
+
+  display: inline-block;
+
+  padding: 8px 12px;
+  border-radius: 12px;
+
+  /* GLASS EFFECT (key change) */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(160, 180, 255, 0.25);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.25),
+    0 0 18px rgba(120, 140, 255, 0.18);
+
+  letter-spacing: 0.3px;
+
+  /* keeps text readable but not heavy */
+  color: rgba(235, 240, 255, 0.95);
+}
+
+.article-item h3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-radius: 12px;
 
   background: var(--theme);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
+  opacity: 0.12;
+
+  z-index: -1;
 }
 
 /* description */
@@ -1068,6 +1103,22 @@ footer::after {
   transform: translateX(4px);
 }
 
+/* =========================
+   ARTICLE DATE
+========================= */
+
+.article-item .article-date {
+  margin: 1px 0 6px 0 !important;
+
+  font-size: 0.68rem !important;
+  letter-spacing: 1px;
+
+  color: rgba(170, 185, 255, 0.5);
+
+  text-transform: uppercase;
+
+  line-height: 1.2;
+}
 
 /* =========================
    CONCEPT SYSTEM (CLEAN FINAL VERSION)
@@ -1396,6 +1447,31 @@ body.light-mode .article-section h3 {
   color: #1f2a3a;
 }
 
+/* =========================
+   LIGHT MODE IMAGE OVERLAYS
+========================= */
+
+body.light-mode .concept-card::after {
+  background: rgba(133, 133, 133, 0.45);
+}
+
+body.light-mode .article-item {
+  background-image:
+    linear-gradient(
+      rgba(174, 180, 188, 0.904),
+      rgba(115, 118, 121, 0.52)
+    ),
+    var(--article-image);
+}
+
+
+/* =========================
+   ARTICLE DATE LIGHT MODE
+========================= */
+
+body.light-mode .article-item .article-date {
+  color: rgba(226, 225, 225, 0.852);
+}
 /* =========================
    ANIMATION
 ========================= */

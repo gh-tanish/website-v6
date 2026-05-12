@@ -948,7 +948,6 @@ footer::after {
 ========================= */
 
 .article-item {
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -957,11 +956,14 @@ footer::after {
   padding: 20px 22px;
   border-radius: 18px;
 
-  /* IMAGE SYSTEM (FIXED) */
-  
+  /* SAFE STACK (Safari-friendly) */
   background-image:
-  linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
-  var(--article-image, url("images/archive-cards.jpg"));
+    linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
+    url("images/archive-cards.jpg"); /* HARD fallback FIRST */
+
+  background-image:
+    linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
+    var(--article-image, url("images/archive-cards.jpg"));
 
   background-size: cover;
   background-position: center;

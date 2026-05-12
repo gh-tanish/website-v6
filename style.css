@@ -958,7 +958,7 @@ footer::after {
 
   background-image:
     linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
-    var(--article-image, url("images/archive-cards.jpg"));
+    var(--article-image, url("./images/archive-cards.jpg"));
 
   background-size: cover;
   background-position: center;
@@ -1457,7 +1457,7 @@ body.light-mode .article-item {
       rgba(174, 180, 188, 0.904),
       rgba(115, 118, 121, 0.52)
     ),
-    var(--article-image, url("images/archive-cards.jpg"));
+    var(--article-image, url("./images/archive-cards.jpg"));
 }
 
 

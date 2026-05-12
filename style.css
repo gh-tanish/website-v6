@@ -936,11 +936,47 @@ footer::after {
    ARTICLE LIST SYSTEM
 ========================= */
 
-.article-list {
+.article-item {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 30px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px 22px;
+  border-radius: 18px;
+
+  /* ONLY overlay now */
+  background: linear-gradient(
+    rgba(10, 12, 18, 0.78),
+    rgba(10, 12, 18, 0.78)
+  );
+
+  border: 1px solid rgba(120,130,255,0.12);
+
+  text-decoration: none;
+  color: #e6e6e6;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.article-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: var(--article-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 0;
+}
+
+
+.article-item > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================
@@ -1003,6 +1039,24 @@ footer::after {
   opacity: 1;
 }
 
+.article-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(10, 12, 18, 0.78),
+      rgba(10, 12, 18, 0.78)
+    ),
+    var(--article-image);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 0;
+}
 /* =========================
    HOVER EFFECT
 ========================= */

@@ -506,8 +506,29 @@ header::after {
 .hero h2 {
   background: var(--theme);
   -webkit-background-clip: text;
+  background-clip: text;
+
   -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* IMPORTANT: remove animation */
+  animation: none;
+  background-size: 100%;
 }
+
+.hero-main h2 {
+  background: var(--theme);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* IMPORTANT: remove animation */
+  animation: none;
+  background-size: 100%;
+}
+
 
 .hero-description {
   font-size: 0.9rem;
@@ -550,6 +571,11 @@ header::after {
   transition: all 0.35s ease;
 
   box-shadow: 0 0 18px rgba(80, 120, 255, 0.10);
+}
+
+.card h3 {
+  position: relative;
+  z-index: 5;
 }
 
 .card::before {
@@ -602,31 +628,52 @@ header::after {
     color: transparent;
   }
 
-body.home .card h3 {
+ body.home .card h3 {
+  position: relative;
   display: inline-block;
+  z-index: 2;
 
-  /* Metallic blue gradient */
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  font-weight: 700;
+  letter-spacing: 0.2px;
+
+  /* darker support layer = better contrast */
+  background: rgba(8, 10, 16, 0.78);
+
+  border: 1px solid rgba(160, 180, 255, 0.12);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+
+body.home .card h3 {
+  color: transparent;
+
   background: linear-gradient(
     90deg,
-    #f8fbff,   /* near-white highlight */
-    #cfe6ff,   /* soft ice blue */
-    #8fbfff,   /* core steel blue */
-    #7fb8ff,   /* deeper blue */
-    #cfe6ff,   /* return highlight */
-    #ffffff    /* clean finish */
+    #eaf4ff,
+    #cfe6ff,
+    #8fbfff,
+    #b9dcff,
+    #eaf4ff
   );
 
   background-size: 200% 200%;
-  animation: gradientShift 10s linear infinite;
+  animation: gradientShift 6s ease infinite;
 
   -webkit-background-clip: text;
   background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-
-  text-shadow: 0 0 8px rgba(140, 180, 255, 0.12);
 }
+
+
+
 
 /* =========================
    CARD GIF BACKGROUNDS
@@ -1488,7 +1535,6 @@ body.light-mode .hero-main {
 
 
 /* CARDS */
-body.light-mode .card,
 body.light-mode .topic-card,
 body.light-mode .concept-card,
 body.light-mode .feature-box,

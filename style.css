@@ -943,6 +943,7 @@ footer::after {
   margin-top: 30px;
 }
 
+
 /* =========================
    ARTICLE ROW
 ========================= */
@@ -950,13 +951,15 @@ footer::after {
 .article-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
 
   padding: 20px 22px;
   border-radius: 18px;
 
-  background-image:
+  border: 1px solid rgba(120,130,255,0.12);
+
+  background:
     linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
     var(--article-image, url("images/archive-cards.jpg"));
 
@@ -964,26 +967,118 @@ footer::after {
   background-position: center;
   background-repeat: no-repeat;
 
-  border: 1px solid rgba(120,130,255,0.12);
-
   text-decoration: none;
   color: #e6e6e6;
 
   transition: all 0.35s ease;
 
   position: relative;
+
   overflow: hidden;
+  isolation: isolate;
 }
 
-/* individual articles */
-.article-psychoanalysis {
-  --article-image: url("images/psychoanalysis.jpg");
+.article-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
 }
 
-.article-half-life {
-  --article-image: url("images/half-life.jpg");
+/* =========================
+   ARTICLE CODE (FIXED)
+========================= */
+
+
+.article-code {
+  position: absolute !important;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+
+  /* FORCE VISIBILITY CONTRAST */
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  color: #070707;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,0.45),
+    0 0 18px rgba(120,140,255,0.35);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  pointer-events: none;
+
+  /* IMPORTANT: prevents pseudo-element affecting layout */
+  overflow: hidden;
+  transform: translateZ(0);
 }
 
+.article-code::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+
+  opacity: 0.22;
+  filter: blur(16px);
+
+  border-radius: inherit;
+
+  z-index: -1;
+
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+.article-item span {
+  align-self: flex-end;
+  margin-top: auto;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  color: rgba(160, 180, 255, 0.9);
+
+  padding: 8px 12px;
+
+  /* BOXIER SHAPE */
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(160, 180, 255, 0.25);
+
+  /* subtle depth instead of blur-heavy glass */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
+  white-space: nowrap;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  z-index: 2;
+}
+
+.article-item:hover span {
+  transform: translateX(4px);
+  box-shadow: 0 0 14px rgba(120,140,255,0.18);
+}
 /* =========================
    GLOW LAYER
 ========================= */
@@ -1093,24 +1188,7 @@ footer::after {
   line-height: 1.5;
 }
 
-/* =========================
-   ACTION (RIGHT SIDE)
-========================= */
 
-.article-item span {
-  font-size: 0.9rem;
-  color: rgba(160, 180, 255, 0.8);
-
-  transition: transform 0.3s ease;
-  white-space: nowrap;
-
-  position: relative;
-  z-index: 2;
-}
-
-.article-item:hover span {
-  transform: translateX(4px);
-}
 
 /* =========================
    ARTICLE DATE
@@ -1469,6 +1547,10 @@ body.light-mode .article-item {
     var(--article-image, url("images/archive-cards.jpg"));
 }
 
+/* LIGHT MODE OVERRIDE */
+body.light-mode .article-code {
+  color: #fff; /* white text in light mode */
+}
 
 /* =========================
    ARTICLE DATE LIGHT MODE

@@ -1,0 +1,9 @@
+/* individual articles */
+.article-psychoanalysis {
+  --article-image: url("images/articles/sen_1.jpg");
+}
+
+.article-half-life {
+  --article-image: url("images/articles/sci_1.jpg");
+}
+

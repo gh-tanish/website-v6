@@ -696,6 +696,7 @@ body.home .card h3 {
   box-shadow: 0 0 18px rgba(80, 120, 255, 0.10);
 }
 
+
 /* THEME GLOW */
 .topic-card::before {
   content: "";
@@ -948,6 +949,7 @@ footer::after {
    ARTICLE ROW
 ========================= */
 
+
 .article-item {
   display: flex;
   justify-content: space-between;
@@ -962,7 +964,7 @@ footer::after {
   background:
     linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
     var(--article-image, url("images/archive-cards.jpg"));
-
+  background-clip: padding-box;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -977,6 +979,7 @@ footer::after {
   overflow: hidden;
   isolation: isolate;
 }
+
 
 .article-content {
   flex: 1;
@@ -1027,6 +1030,7 @@ footer::after {
   overflow: hidden;
   transform: translateZ(0);
 }
+
 
 .article-code::after {
   content: "";
@@ -1425,21 +1429,7 @@ body.light-mode .theme-toggle:hover {
    SMOOTH TRANSITIONS
 ========================= */
 
-body,
-header,
-footer,
-.card,
-.topic-card,
-.concept-card,
-.feature-box,
-.hero-main,
-.article-item {
-  transition:
-    background 0.4s ease,
-    color 0.4s ease,
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
-}
+
 
 
 /* =========================
@@ -1454,7 +1444,18 @@ body.light-mode {
 
   color: #1c2433;
 }
-
+body,
+header,
+footer,
+.card,
+.topic-card,
+.concept-card,
+.feature-box,
+.hero-main,
+.article-item {
+  transition:
+    all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 /* HEADER */
 body.light-mode header {

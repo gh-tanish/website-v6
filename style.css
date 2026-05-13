@@ -142,6 +142,9 @@ body.light-mode {
 
 }
 
+
+
+
 /* AUTO PAGE THEMES */
 body.scientia {
   --theme: var(--scientia);
@@ -1429,12 +1432,16 @@ body.light-mode .theme-toggle:hover {
    SMOOTH TRANSITIONS
 ========================= */
 
-
+.preload * {
+  transition: none !important;
+}
 
 
 /* =========================
    LIGHT MODE
 ========================= */
+
+
 
 body.light-mode {
   background:
@@ -1444,6 +1451,9 @@ body.light-mode {
 
   color: #1c2433;
 }
+
+
+
 body,
 header,
 footer,
@@ -1454,8 +1464,12 @@ footer,
 .hero-main,
 .article-item {
   transition:
-    all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
 
 /* HEADER */
 body.light-mode header {
@@ -1489,6 +1503,8 @@ body.light-mode .article-item {
 }
 
 
+
+
 /* TEXT */
 body.light-mode p,
 body.light-mode span,
@@ -1514,7 +1530,6 @@ body.light-mode footer {
    LIGHT MODE CARD TEXT FIX
 ========================= */
 
-body.light-mode .card,
 body.light-mode .topic-card,
 body.light-mode .concept-card,
 body.light-mode .feature-box,
@@ -1522,10 +1537,19 @@ body.light-mode .article-item {
   color: #1f2a3a;
 }
 
-body.light-mode .card p,
+body.light-mode .card {
+  color: #f9f9f9;
+}
+
+body.light-mode .topic-card p,
 body.light-mode .concept-card p,
+body.light-mode .feature-box p,
 body.light-mode .article-item p {
-  color: rgba(255, 255, 255, 0.909);
+  color: rgba(31, 42, 58, 0.82);
+}
+
+body.light-mode .card p {
+  color: #f9f9f9;
 }
 
 body.light-mode .concept-header h3,

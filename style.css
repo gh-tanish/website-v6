@@ -1542,13 +1542,13 @@ body.light-mode .card {
 }
 
 body.light-mode .topic-card p,
-body.light-mode .concept-card p,
-body.light-mode .feature-box p,
-body.light-mode .article-item p {
+body.light-mode .feature-box p {
   color: rgba(31, 42, 58, 0.82);
 }
 
-body.light-mode .card p {
+body.light-mode .card p,
+body.light-mode .concept-card p,
+body.light-mode .article-item p {
   color: #f9f9f9;
 }
 

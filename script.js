@@ -25,25 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     2. SYSTEM THEME SUPPORT
+     2. LOAD SAVED THEME ONLY
   ========================= */
 
   const savedTheme = localStorage.getItem("theme");
 
-  if (!savedTheme) {
-
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-
-    if (prefersLight) {
-      document.body.classList.add("light-mode");
-      document.documentElement.classList.add("light-mode");
-    }
-
-  } else if (savedTheme === "light") {
-
+  if (savedTheme === "light") {
     document.body.classList.add("light-mode");
     document.documentElement.classList.add("light-mode");
-
   }
 
   /* =========================

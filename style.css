@@ -1478,12 +1478,34 @@ body.sensus { --title-theme: var(--sensus-title); }
 
 .concept-card .read {
   display: inline-block;
+
   margin-top: 14px;
 
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
 
   color: rgba(160, 180, 255, 0.9);
+
+  padding: 8px 12px;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(160, 180, 255, 0.25);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
+  white-space: nowrap;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+
+  z-index: 2;
+}
+
+.concept-card:hover .read {
+  transform: translateX(4px);
+  box-shadow: 0 0 14px rgba(120,140,255,0.18);
 }
 
 /* =========================
@@ -1715,7 +1737,7 @@ body.light-mode .feature-box p {
 body.light-mode .card p,
 body.light-mode .concept-card p,
 body.light-mode .article-item p {
-  color: #f9f9f9;
+  color: #ffffff;
 }
 
 body.light-mode .concept-header h3,
@@ -1748,7 +1770,7 @@ body.light-mode .article-code {
 ========================= */
 
 body.light-mode .article-item .article-date {
-  color: rgba(226, 225, 225, 0.852);
+  color: rgba(255, 255, 255, 0.852);
 }
 
 

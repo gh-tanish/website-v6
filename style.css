@@ -119,13 +119,13 @@ body.light-mode {
   );
 
   --logos: linear-gradient(
-  120deg,
-  #7a4a4a,  /* warm muted red */
-  #a85a42,  /* richer oxidised red */
-  #d1763f,  /* strong burnt orange */
-  #f0a35e,  /* soft golden orange */
-  #c98b5a,  /* warm sand / balance point */
-  #8a6a55   /* warm neutral return */
+    120deg,
+    #7a4a4a,  /* warm muted red */
+    #a85a42,  /* richer oxidised red */
+    #d1763f,  /* strong burnt orange */
+    #f0a35e,  /* soft golden orange */
+    #c98b5a,  /* warm sand / balance point */
+    #8a6a55   /* warm neutral return */
   );
 
   --sensus: linear-gradient(
@@ -136,13 +136,54 @@ body.light-mode {
     #6f3aa8,
     #4f2f7f
   );
+
 }
 
 --card-overlay: rgba(10, 10, 16, 0.72);
 
 }
 
+:root {
+--scientia-title: conic-gradient(
+  from 180deg,
+  #ffffff,
+  #eaf4ff,
+  #7fb8ff,
+  #4f9fff,
+  #bcdcff,
+  #ffffff
+);
 
+--vitalis-title: conic-gradient(
+  from 180deg,
+  #f6fff3,
+  #bfffe3,
+  #3fffb0,
+  #2ad8c0,
+  #d6fff0,
+  #ffffff
+);
+
+--logos-title: conic-gradient(
+  from 180deg,
+  #ffffff,
+  #ffeacc,
+  #ffcd8a,
+  #ffb86b,
+  #ffe3b8,
+  #ffffff
+);
+
+--sensus-title: conic-gradient(
+  from 180deg,
+  #ffffff,
+  #f4e2ff,
+  #d39bff,
+  #ff7fc8,
+  #e3e8ff,
+  #ffffff
+);
+}
 
 
 /* AUTO PAGE THEMES */
@@ -1281,17 +1322,20 @@ footer::after {
   padding: 26px;
 
   border-radius: 28px;
-
-  background: rgba(15, 17, 24, 0.88);
   border: 1px solid rgba(120,130,255,0.12);
-
-  text-decoration: none;
-  color: #e6e6e6;
 
   position: relative;
   overflow: hidden;
 
+  text-decoration: none;
+  color: #e6e6e6;
+
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+
+  background-image: var(--concept-image, url("images/cards.jpg"));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* glow layer */
@@ -1324,14 +1368,98 @@ footer::after {
    CARD TITLE
 ========================= */
 
+
+
 .concept-card h3 {
   margin: 0 0 10px 0;
   font-size: 1.15rem;
 
-  background: var(--theme);
+  position: relative;
+  display: inline-block;
+
+  padding: 2px 12px;
+  border-radius: 10px;
+
+  background: rgba(90, 89, 89, 0.295);
+  border: 1px solid rgba(140, 160, 255, 0.18);
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.concept-title {
+  background-image: var(--title-theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+body.scientia { --title-theme: var(--scientia-title); }
+body.vitalis { --title-theme: var(--vitalis-title); }
+body.logos { --title-theme: var(--logos-title); }
+body.sensus { --title-theme: var(--sensus-title); }
+
+
+.concept-code {
+  position: absolute !important;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+
+  /* FORCE VISIBILITY CONTRAST */
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 7s ease infinite;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  color: #070707;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(120, 140, 255, 0.35);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  pointer-events: none;
+
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.concept-code::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+
+  background: var(--theme);
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+
+  opacity: 0.22;
+  filter: blur(16px);
+
+  border-radius: inherit;
+
+  z-index: -1;
+
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
 
 /* =========================
    CARD TEXT
@@ -1401,12 +1529,6 @@ footer::after {
    CONCEPT CARD BACKGROUND IMAGE
 ========================= */
 
-.concept-card {
-  background-image: url("images/cards.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 /* DARK OVERLAY (so text stays readable) */
 .concept-card::after {
@@ -1414,11 +1536,10 @@ footer::after {
   position: absolute;
   inset: 0;
 
-  background: rgba(10, 12, 18, 0.72);
+  background: rgba(10, 12, 18, 0.55); /* was 0.72 — too strong */
 
   z-index: 1;
 }
-
 /* ensure content stays above overlay */
 .concept-card > * {
   position: relative;
@@ -1536,7 +1657,6 @@ body.light-mode .hero-main {
 
 /* CARDS */
 body.light-mode .topic-card,
-body.light-mode .concept-card,
 body.light-mode .feature-box,
 body.light-mode .article-item {
   background-color: rgba(242, 246, 252, 0.78);
@@ -1630,6 +1750,16 @@ body.light-mode .article-code {
 body.light-mode .article-item .article-date {
   color: rgba(226, 225, 225, 0.852);
 }
+
+
+body.light-mode .concept-code {
+  color: #fff; /* keeps contrast on lighter backgrounds */
+}
+
+body.light-mode .concept-card::after {
+  background: rgba(65, 64, 64, 0.489);
+}
+
 /* =========================
    ANIMATION
 ========================= */

@@ -7,3 +7,11 @@
   --article-image: url("images/articles/sci_1.jpg");
 }
 
+.article-vit_1 {
+  --article-image: url("images/articles/vit_1.jpg");
+}
+
+.article-vit_2 {
+  --article-image: url("images/articles/vit_2.jpg");
+}
+

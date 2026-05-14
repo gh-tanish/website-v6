@@ -3,7 +3,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("theme-toggle");
 
   /* =========================
-     1. SYSTEM THEME SUPPORT
+     1. MOBILE BROWSER BAR COLOR
+  ========================= */
+
+  let themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  if (!themeMeta) {
+    themeMeta = document.createElement("meta");
+    themeMeta.name = "theme-color";
+    document.head.appendChild(themeMeta);
+  }
+
+  function updateThemeColor() {
+
+    if (document.body.classList.contains("light-mode")) {
+      themeMeta.setAttribute("content", "#dfe5ee");
+    } else {
+      themeMeta.setAttribute("content", "#0b0b0f");
+    }
+
+  }
+
+  /* =========================
+     2. SYSTEM THEME SUPPORT
   ========================= */
 
   const savedTheme = localStorage.getItem("theme");
@@ -25,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     2. UPDATE BUTTON TEXT
+     3. UPDATE BUTTON TEXT
   ========================= */
 
   function updateButton() {
@@ -41,9 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateButton();
+  updateThemeColor();
 
   /* =========================
-     3. THEME TOGGLE
+     4. THEME TOGGLE
   ========================= */
 
   if (toggleBtn) {
@@ -60,13 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       updateButton();
+      updateThemeColor();
 
     });
 
   }
 
   /* =========================
-     4. ACTIVE NAV LINK HIGHLIGHT
+     5. ACTIVE NAV LINK HIGHLIGHT
   ========================= */
 
   const links = document.querySelectorAll("nav a");
@@ -81,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =========================
-     5. SMOOTH PAGE READY STATE
+     6. SMOOTH PAGE READY STATE
   ========================= */
 
   document.body.classList.add("loaded");

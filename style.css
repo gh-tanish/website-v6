@@ -185,6 +185,21 @@ body.light-mode {
 );
 }
 
+body.scientia {
+  --topic-accent: rgba(90, 140, 255, 0.14);
+}
+
+body.vitalis {
+  --topic-accent: rgba(90, 255, 170, 0.12);
+}
+
+body.logos {
+  --topic-accent: rgba(255, 190, 120, 0.12);
+}
+
+body.sensus {
+  --topic-accent: rgba(210, 120, 255, 0.13);
+}
 
 /* AUTO PAGE THEMES */
 body.scientia {
@@ -239,6 +254,10 @@ html, body {
 
 html {
   background: #0b0b0f;
+}
+
+html.light-mode {
+  background: #dfe5ee;
 }
 
 body {
@@ -766,6 +785,7 @@ body.home .card h3 {
   margin-top: 40px;
 }
 
+
 /* CARD STYLE */
 .topic-card {
   display: block;
@@ -773,7 +793,18 @@ body.home .card h3 {
 
   border-radius: 26px;
 
-  background: rgba(18, 20, 28, 0.92);
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,0.015),
+    rgba(255,255,255,0.01)
+  ),
+  radial-gradient(
+    circle at top left,
+    var(--topic-accent),
+    transparent 65%
+  ),
+  rgba(18, 20, 28, 0.92);
   border: 1px solid rgba(120,130,255,0.15);
 
   text-decoration: none;
@@ -785,6 +816,8 @@ body.home .card h3 {
   transition: all 0.35s ease;
 
   box-shadow: 0 0 18px rgba(80, 120, 255, 0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 
@@ -855,6 +888,47 @@ body.home .card h3 {
   border: 1px solid rgba(120,130,255,0.12);
 }
 
+.feature-box a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 12px;
+
+  color: rgba(160, 180, 255, 0.92);
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.feature-box a {
+  padding: 6px 10px;
+
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(160,180,255,0.16);
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.18);
+}
+
+.feature-box a:hover {
+  transform: translateX(4px);
+
+  color: rgba(220, 230, 255, 1);
+
+  text-shadow:
+    0 0 12px rgba(120,140,255,0.25);
+}
 
 /* =========================
    9. QUOTE
@@ -1319,7 +1393,7 @@ footer::after {
 
 .concept-card {
   display: block;
-  padding: 26px;
+  padding: 20px 26px;
 
   border-radius: 28px;
   border: 1px solid rgba(120,130,255,0.12);

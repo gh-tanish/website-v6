@@ -9,13 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme");
 
   if (!savedTheme) {
+
     const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
 
     if (prefersLight) {
       document.body.classList.add("light-mode");
+      document.documentElement.classList.add("light-mode");
     }
+
   } else if (savedTheme === "light") {
+
     document.body.classList.add("light-mode");
+    document.documentElement.classList.add("light-mode");
+
   }
 
   /* =========================
@@ -23,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
 
   function updateButton() {
+
     if (!toggleBtn) return;
 
     if (document.body.classList.contains("light-mode")) {
@@ -30,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       toggleBtn.textContent = "𖤓 Light Mode";
     }
+
   }
 
   updateButton();
@@ -43,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn.addEventListener("click", () => {
 
       document.body.classList.toggle("light-mode");
+      document.documentElement.classList.toggle("light-mode");
 
       if (document.body.classList.contains("light-mode")) {
         localStorage.setItem("theme", "light");
@@ -51,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       updateButton();
+
     });
 
   }
@@ -62,10 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll("nav a");
 
   links.forEach(link => {
+
     if (link.href === window.location.href) {
       link.style.opacity = "1";
       link.style.textDecoration = "underline";
     }
+
   });
 
   /* =========================

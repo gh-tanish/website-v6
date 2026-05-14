@@ -3,6 +3,10 @@
   --article-image: url("images/articles/sen_1.jpg");
 }
 
+.article-sen_2 {
+  --article-image: url("images/articles/sen_2.jpg");
+}
+
 .article-sci_1 {
   --article-image: url("images/articles/sci_1.jpg");
 }

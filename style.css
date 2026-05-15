@@ -260,6 +260,14 @@ html.light-mode {
   background: #e8edf6;
 }
 
+html {
+  color-scheme: dark;
+}
+
+html.light-mode {
+  color-scheme: light;
+}
+
 body {
   min-height: 100vh;
   background:

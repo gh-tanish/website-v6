@@ -1,0 +1,434 @@
+
+.article-page {
+  --bg: #0b0f14;
+  --card: rgba(20, 24, 36, 0.75);
+  --text: rgba(230, 235, 245, 0.88);
+  --muted: rgba(210, 220, 240, 0.65);
+  --border: rgba(120, 130, 255, 0.12);
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =========================
+   ARTICLE TYPOGRAPHY ONLY
+========================= */
+
+.article-body,
+.article-body p,
+.article-body li,
+.article-body blockquote,
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-figures,
+.article-figures p,
+.article-figures li,
+.article-figures a,
+.bibliography,
+.bibliography p,
+.bibliography li,
+.bib-entry,
+.bib-entry a,
+.bib-entry strong {
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+  line-height: 1.7;
+}
+
+/* =========================
+   LIGHT MODE OVERRIDES
+========================= */
+
+body.light-mode.article-page {
+  --bg: #f6f7fb;
+  --card: rgba(255, 255, 255, 0.75);
+  --text: rgba(20, 22, 30, 0.92);
+  --muted: rgba(40, 45, 60, 0.7);
+  --border: rgba(60, 80, 140, 0.15);
+}
+
+
+/* =========================
+   ARTICLE HERO HEADER
+========================= */
+
+.article-hero {
+  margin-top: 24px;
+  padding: 28px;
+
+  border-radius: 18px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.article-status,
+.article-tag {
+  font-size: 0.72rem;
+  padding: 4px 10px;
+
+  border-radius: 999px;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+/* STATUS */
+.article-status {
+  background: rgba(255, 80, 80, 0.12);
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  color: #ffb3b3;
+}
+
+/* TAG */
+.article-tag {
+  background: rgba(120, 140, 255, 0.12);
+  border: 1px solid rgba(120, 140, 255, 0.25);
+  color: #b9c7ff;
+}
+
+/* TITLE */
+.article-hero h1 {
+  font-size: 1.9rem;
+  margin: 10px 0;
+  font-weight: 650;
+  letter-spacing: -0.3px;
+}
+
+/* SUBTITLE */
+.article-subtitle {
+  opacity: 0.8;
+  margin-bottom: 12px;
+
+  font-size: 1rem;
+}
+
+/* META INFO */
+.article-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* =========================
+   ARTICLE BODY
+========================= */
+
+.article-body {
+  margin-top: 32px;
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.025),
+    rgba(255,255,255,0.015)
+  );
+
+  border: 1px solid rgba(120, 130, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.10);
+
+  font-size: 0.98rem;
+  line-height: 1.82;
+
+  font-weight: 430;
+  letter-spacing: 0.01em;
+
+  color: var(--text);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* PARAGRAPHS */
+.article-body p {
+  margin: 14px 0;
+  color: var(--muted);
+}
+
+.article-body strong {
+  font-weight: 700;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.04);
+}
+
+body.light-mode .article-body strong {
+  color: rgba(15, 18, 28, 0.96);
+
+  text-shadow: none;
+}
+
+/* =========================
+   HEADINGS SYSTEM
+========================= */
+
+/* PRIMARY */
+.article-body h2 {
+  margin-top: 6px;
+  margin-bottom: 14px;
+
+  font-size: 1.4rem;
+  font-weight: 650;
+
+  letter-spacing: -0.02em;
+
+  color: var(--text);
+
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.article-body h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 70px;
+  height: 1px;
+
+  background: var(--border);
+  opacity: 0.9;
+}
+
+/* SUB */
+.article-body h3 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  color: var(--text);
+
+  border-left: 2px solid var(--border);
+  padding-left: 10px;
+}
+
+/* SMALL LABELS */
+.article-body h4 {
+  margin-top: 18px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: var(--muted);
+}
+
+
+sup.ref {
+  font-size: 0.72em;
+  vertical-align: super;
+
+  margin-left: 2px;
+
+  color: rgba(125, 155, 255, 0.98);
+
+  font-weight: 750;
+
+  letter-spacing: -0.02em;
+
+  text-shadow:
+    0 0 8px rgba(120, 150, 255, 0.18);
+}
+/* =========================
+   SECTION CARDS
+========================= */
+
+.article-body section {
+  margin: 18px 0;
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   FIGURES
+========================= */
+
+.article-figures {
+  margin-top: 42px;
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.article-figures a {
+  color: var(--muted);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+/* =========================
+   BIBLIOGRAPHY (IMPROVED)
+========================= */
+
+.bibliography {
+  margin-top: 42px;
+  padding: 22px;
+
+  border-radius: 16px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+
+  /* 🔥 FIXED CARD BEHAVIOUR */
+  max-height: 420px;      /* adjust size if you want taller/shorter */
+  overflow-y: auto;       /* enables vertical scrolling */
+
+  scroll-behavior: smooth;
+}
+
+/* optional: makes scrollbar look cleaner (Chrome/Edge) */
+.bibliography::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bibliography::-webkit-scrollbar-thumb {
+  background: rgba(120, 140, 255, 0.25);
+  border-radius: 999px;
+}
+
+.bibliography::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 140, 255, 0.4);
+}
+
+
+.bibliography {
+  margin-top: 42px;
+  padding: 22px;
+
+  border-radius: 16px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.bibliography h2 {
+  margin-bottom: 18px;
+  font-size: 1.25rem;
+}
+
+/* each entry is now clearly separated */
+.bib-entry {
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.bib-entry:last-child {
+  border-bottom: none;
+}
+
+/* source title */
+.bib-entry strong {
+  display: block;
+  margin-bottom: 6px;
+
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* link styling improved clarity */
+.bib-entry a {
+  display: inline-block;
+
+  font-size: 0.9rem;
+  color: rgba(120, 160, 255, 0.9);
+
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.bib-entry a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.section-divider {
+  margin: 34px 0;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .article-hero {
+    padding: 18px;
+  }
+
+  .article-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .article-body {
+    font-size: 1rem;
+  }
+
+  .article-body section {
+    padding: 14px;
+  }
+
+  .bibliography,
+  .article-figures {
+    padding: 16px;
+  }
+
+  .article-info {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

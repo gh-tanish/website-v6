@@ -104,3 +104,21 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", () => {
   document.body.classList.remove("preload");
 });
+
+window.addEventListener("load", () => {
+
+  document.body.classList.remove("preload");
+
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  if (themeMeta) {
+
+    if (document.body.classList.contains("light-mode")) {
+      themeMeta.setAttribute("content", "#dfe5ee");
+    } else {
+      themeMeta.setAttribute("content", "#0b0b0f");
+    }
+
+  }
+
+});

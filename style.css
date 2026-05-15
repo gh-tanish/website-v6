@@ -1215,108 +1215,68 @@ footer::after {
 
 
 /* =========================================================
-   MOBILE LANDSCAPE FIX (PREVENT LAYOUT BREAKS)
-   Applies ONLY to horizontal phone/tablet landscape views
+   FIXED TOP BAR (MOBILE LANDSCAPE ONLY)
+   Prevents header + nav scrolling with page
 ========================================================= */
 
 @media screen and (max-width: 900px) and (orientation: landscape) {
 
   /* -------------------------
-     STOP MOBILE TEXT SCALING
-  -------------------------- */
-
-  html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-
-  body {
-    font-size: 16px;
-  }
-
-  /* -------------------------
-     HEADER / NAV FIX (MOST IMPORTANT)
+     FORCE FIXED HEADER
   -------------------------- */
 
   header {
-    position: relative !important;  /* stops sticky/fixed behaviour */
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
 
     width: 100%;
+    z-index: 9999;
+
+    /* ensures it behaves like a real app bar */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
+  /* -------------------------
+     PREVENT CONTENT GOING UNDER HEADER
+  -------------------------- */
+
+  body,
+  .article-page {
+    padding-top: 80px; /* adjust if header is taller */
+  }
+
+  /* -------------------------
+     NAV STABILITY INSIDE FIXED HEADER
+  -------------------------- */
+
   nav {
-    position: relative !important;
-
+    display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;      /* prevents wrapping explosion */
-    overflow-y: hidden;
+    overflow-x: auto;
 
-    justify-content: flex-start;  /* more stable than center */
+    justify-content: flex-start;
     gap: 10px;
 
-    padding-bottom: 6px;
+    max-width: 100%;
   }
 
   nav a,
   .theme-toggle {
     flex-shrink: 0;
-    font-size: 0.95rem;
+    white-space: nowrap;
   }
 
   /* -------------------------
-     PAGE TITLE FIX
+     TITLE STABILITY
   -------------------------- */
 
-  .page-title {
-    font-size: 1.6rem !important;
+  .page-title,
+  header h1 {
+    font-size: 1.5rem !important;
     line-height: 1.1;
-  }
-
-  h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.2;
-  }
-
-  /* -------------------------
-     HERO CARD TEXT STABILITY
-  -------------------------- */
-
-  .article-hero h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.2;
-  }
-
-  .article-subtitle {
-    font-size: 0.95rem;
-  }
-
-  .article-info {
-    font-size: 0.85rem;
-  }
-
-  /* -------------------------
-     PREVENT LAYOUT OVERFLOW ISSUES
-  -------------------------- */
-
-  .article-hero,
-  .article-body {
-    padding: 16px;
-  }
-
-  /* -------------------------
-     OPTIONAL: SCROLLBAR CLEANUP FOR NAV
-  -------------------------- */
-
-  nav::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  nav::-webkit-scrollbar-thumb {
-    background: rgba(120, 140, 255, 0.25);
-    border-radius: 999px;
   }
 }
 

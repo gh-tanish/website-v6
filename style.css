@@ -1213,74 +1213,49 @@ footer::after {
   }
 }
 
+/* =========================
+   MOBILE PERFORMANCE MODE
+========================= */
+@media (max-width: 900px) {
 
-/* =========================================================
-   FIXED TOP BAR (MOBILE LANDSCAPE ONLY)
-   Prevents header + nav scrolling with page
-========================================================= */
-
-@media screen and (max-width: 900px) and (orientation: landscape) {
-
-  /* -------------------------
-     FORCE FIXED HEADER
-  -------------------------- */
-
-  header {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    width: 100%;
-    z-index: 9999;
-
-    /* ensures it behaves like a real app bar */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  /* reduce expensive blur effects */
+  .article-body,
+  .article-hero,
+  .article-figures,
+  .bibliography,
+  .article-body section {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
-  /* -------------------------
-     PREVENT CONTENT GOING UNDER HEADER
-  -------------------------- */
-
-  body,
-  .article-page {
-    padding-top: 80px; /* adjust if header is taller */
+  /* flatten shadows (VERY important for smooth scroll) */
+  .article-body,
+  .article-hero,
+  .article-figures,
+  .bibliography,
+  .article-body section {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
   }
 
-  /* -------------------------
-     NAV STABILITY INSIDE FIXED HEADER
-  -------------------------- */
-
-  nav {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-
-    justify-content: flex-start;
-    gap: 10px;
-
-    max-width: 100%;
+  /* stop animated gradients on mobile */
+  * {
+    animation: none !important;
   }
 
-  nav a,
-  .theme-toggle {
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  /* -------------------------
-     TITLE STABILITY
-  -------------------------- */
-
+  /* reduce heavy text rendering effects */
   .page-title,
-  header h1 {
-    font-size: 1.5rem !important;
-    line-height: 1.1;
+  nav a:hover {
+    text-shadow: none !important;
   }
 }
 
+html {
+  scroll-behavior: auto; /* prevents extra smoothing lag on mobile */
+}
 
+body {
+  -webkit-overflow-scrolling: touch;
+}
 
 
 /* =========================

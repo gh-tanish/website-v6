@@ -309,7 +309,11 @@ header {
 }
 
 body {
-  padding-top: 215px; /* adjust to header height */
+  padding-top: 170px; /* adjust to header height */
+}
+
+body.home {
+  padding-top: 225px; /* adjust to header height */
 }
 
 

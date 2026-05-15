@@ -457,6 +457,69 @@ header::after {
    6. HERO
 ========================= */
 
+/* =========================
+   HERO (MINIMAL / GLASS EDGE ONLY)
+========================= */
+
+.hero {
+  margin-top: 24px;
+  padding: 20px 22px;
+
+  border-radius: 18px;
+
+  /* no solid background */
+  background: transparent;
+
+  border: 1px solid rgba(120, 130, 255, 0.12);
+
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* TITLE */
+.hero h2 {
+  margin: 0 0 10px 0;
+
+  font-size: 1.35rem;
+  font-weight: 600;
+
+  color: rgba(230, 235, 255, 0.92);
+}
+
+/* =========================
+   HERO TEXT STRUCTURE
+========================= */
+
+/* =========================
+   HERO PARAGRAPH BLOCKS
+========================= */
+
+.hero p {
+  margin: 8px 0;
+  padding-left: 14px;
+
+  font-size: 0.98rem;
+  line-height: 1.6;
+
+  color: rgba(200, 210, 235, 0.75);
+
+  border-left: 2px solid rgba(121, 121, 126, 0.12);
+}
+
+/* LABEL (Articles / Concepts / Explore) */
+.hero p strong {
+  display: inline-block;
+
+  margin-right: 0px;
+
+  font-weight: 700;
+
+  background: var(--theme);
+  background-size: 300% 300%;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero-main {
   margin-top: 30px;
   padding: 48px;

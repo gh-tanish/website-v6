@@ -461,18 +461,48 @@ header::after {
    HERO (MINIMAL / GLASS EDGE ONLY)
 ========================= */
 
+/* =========================
+   HERO CONTAINER
+========================= */
+
 .hero {
   margin-top: 24px;
   padding: 20px 22px;
 
   border-radius: 18px;
 
-  /* no solid background */
   background: transparent;
 
   border: 1px solid rgba(120, 130, 255, 0.12);
 
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================
+   HERO AMBIENT GLOW LAYER
+========================= */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top left,
+    var(--glow),
+    transparent 40%
+  );
+
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+}
+
+
+.hero {
+  isolation: isolate;
 }
 
 /* TITLE */
@@ -486,30 +516,50 @@ header::after {
 }
 
 /* =========================
-   HERO TEXT STRUCTURE
-========================= */
-
-/* =========================
-   HERO PARAGRAPH BLOCKS
+   HERO PARAGRAPH (THEME GLASS)
 ========================= */
 
 .hero p {
-  margin: 8px 0;
-  padding-left: 14px;
+  margin: 10px 0;
+  padding: 10px 14px 10px 16px;
 
   font-size: 0.98rem;
-  line-height: 1.6;
+  line-height: 1.65;
 
-  color: rgba(200, 210, 235, 0.75);
+  color: rgba(210, 220, 245, 0.78);
 
-  border-left: 2px solid rgba(121, 121, 126, 0.12);
+  border-left: 2px solid rgba(120, 140, 255, 0.18);
+
+  border-radius: 12px;
+
+  position: relative;
+  overflow: hidden;
+
+  /* base glass */
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.015)
+  );
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* subtle theme gradient layer */
+/* subtle theme gradient layer (enhanced glass version) */
+
+/* ensure text stays above gradient */
+.hero p > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* LABEL (Articles / Concepts / Explore) */
 .hero p strong {
   display: inline-block;
-
-  margin-right: 0px;
 
   font-weight: 700;
 
@@ -744,7 +794,7 @@ header::after {
    CARD TITLE GRADIENT FIX (WORKING)
 ========================= */
 
-  .card h3 {
+.card h3 {
     display: inline-block;
 
     background-image: var(--theme);
@@ -757,7 +807,7 @@ header::after {
     -webkit-text-fill-color: transparent;
 
     color: transparent;
-  }
+}
 
  body.home .card h3 {
   position: relative;

@@ -1213,7 +1213,37 @@ footer::after {
   }
 }
 
+@media screen and (max-width: 900px) and (orientation: landscape) {
 
+  /* stop mobile typography scaling */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* prevent huge nav expansion */
+  nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+  }
+
+  nav a,
+  .theme-toggle {
+    flex-shrink: 0;
+    font-size: 0.95rem;
+  }
+
+  /* stop headings scaling too aggressively */
+  h1, .page-title {
+    font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+  }
+
+  /* prevent body text blow-up */
+  body {
+    font-size: 16px;
+  }
+}
 
 
 

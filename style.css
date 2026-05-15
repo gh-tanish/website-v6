@@ -1213,19 +1213,51 @@ footer::after {
   }
 }
 
+
+/* =========================================================
+   MOBILE LANDSCAPE FIX (PREVENT LAYOUT BREAKS)
+   Applies ONLY to horizontal phone/tablet landscape views
+========================================================= */
+
 @media screen and (max-width: 900px) and (orientation: landscape) {
 
-  /* stop mobile typography scaling */
+  /* -------------------------
+     STOP MOBILE TEXT SCALING
+  -------------------------- */
+
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
 
-  /* prevent huge nav expansion */
+  body {
+    font-size: 16px;
+  }
+
+  /* -------------------------
+     HEADER / NAV FIX (MOST IMPORTANT)
+  -------------------------- */
+
+  header {
+    position: relative !important;  /* stops sticky/fixed behaviour */
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+
+    width: 100%;
+  }
+
   nav {
+    position: relative !important;
+
     flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: center;
+    overflow-x: auto;      /* prevents wrapping explosion */
+    overflow-y: hidden;
+
+    justify-content: flex-start;  /* more stable than center */
+    gap: 10px;
+
+    padding-bottom: 6px;
   }
 
   nav a,
@@ -1234,17 +1266,59 @@ footer::after {
     font-size: 0.95rem;
   }
 
-  /* stop headings scaling too aggressively */
-  h1, .page-title {
-    font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+  /* -------------------------
+     PAGE TITLE FIX
+  -------------------------- */
+
+  .page-title {
+    font-size: 1.6rem !important;
+    line-height: 1.1;
   }
 
-  /* prevent body text blow-up */
-  body {
-    font-size: 16px;
+  h1 {
+    font-size: 1.6rem !important;
+    line-height: 1.2;
+  }
+
+  /* -------------------------
+     HERO CARD TEXT STABILITY
+  -------------------------- */
+
+  .article-hero h1 {
+    font-size: 1.6rem !important;
+    line-height: 1.2;
+  }
+
+  .article-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .article-info {
+    font-size: 0.85rem;
+  }
+
+  /* -------------------------
+     PREVENT LAYOUT OVERFLOW ISSUES
+  -------------------------- */
+
+  .article-hero,
+  .article-body {
+    padding: 16px;
+  }
+
+  /* -------------------------
+     OPTIONAL: SCROLLBAR CLEANUP FOR NAV
+  -------------------------- */
+
+  nav::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  nav::-webkit-scrollbar-thumb {
+    background: rgba(120, 140, 255, 0.25);
+    border-radius: 999px;
   }
 }
-
 
 
 

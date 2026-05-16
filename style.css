@@ -144,8 +144,8 @@ body.light-mode {
 }
 
 :root {
---scientia-title: conic-gradient(
-  from 180deg,
+--scientia-title: linear-gradient(
+  90deg,
   #ffffff,
   #eaf4ff,
   #7fb8ff,
@@ -154,8 +154,8 @@ body.light-mode {
   #ffffff
 );
 
---vitalis-title: conic-gradient(
-  from 180deg,
+--vitalis-title: linear-gradient(
+  90deg,
   #f6fff3,
   #bfffe3,
   #3fffb0,
@@ -164,8 +164,8 @@ body.light-mode {
   #ffffff
 );
 
---logos-title: conic-gradient(
-  from 180deg,
+--logos-title: linear-gradient(
+  90deg,
   #ffffff,
   #ffeacc,
   #ffcd8a,
@@ -174,14 +174,13 @@ body.light-mode {
   #ffffff
 );
 
---sensus-title: conic-gradient(
-  from 180deg,
-  #ffffff,
-  #f4e2ff,
-  #d39bff,
-  #ff7fc8,
-  #e3e8ff,
-  #ffffff
+--sensus-title: linear-gradient(
+  90deg,
+  #f5ebf8,
+  #d9b9f1,
+  #fd7fff,
+  #f78bc1,
+  #e9cfdb
 );
 }
 
@@ -1636,7 +1635,6 @@ body {
 .concept-title {
   background-image: var(--title-theme);
   background-size: 300% 300%;
-  animation: gradientShift 7s ease infinite;
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

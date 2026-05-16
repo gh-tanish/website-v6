@@ -1323,6 +1323,41 @@ body {
    ARTICLE LIST SYSTEM
 ========================= */
 
+.article-scroll {
+  margin-top: 30px;
+  margin-bottom: 34px; /* 🔥 adds breathing room below */
+
+  padding: 0px 22px 28px 22px; /* top | right | bottom | left */
+
+  border-radius: 16px;
+
+  background: var(--card);
+
+  border: 1px solid rgba(120, 130, 255, 0.22);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 10px 28px rgba(0, 0, 0, 0.18);
+
+  max-height: 420px;
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+}
+
+/* scrollbar styling (same idea as bibliography) */
+.article-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.article-scroll::-webkit-scrollbar-thumb {
+  background: rgba(120, 140, 255, 0.25);
+  border-radius: 999px;
+}
+
+.article-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 140, 255, 0.4);
+}
 .article-list {
   display: flex;
   flex-direction: column;

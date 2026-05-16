@@ -63,16 +63,16 @@
       background: rgba(255,255,255,0.06);
     }
 
-    /* MAIN WRAP */
+    /* MAIN WRAP (SHIFTED UP) */
     .wrap {
       flex: 1;
 
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start; /* changed from center */
       align-items: center;
 
-      padding: 100px 20px 60px;
+      padding: 120px 20px 60px; /* more top spacing but not centred */
       text-align: center;
     }
 
@@ -129,6 +129,10 @@
 
     /* MOBILE */
     @media (max-width: 600px) {
+      .wrap {
+        padding: 100px 16px 40px;
+      }
+
       .card {
         padding: 26px 18px;
         border-radius: 18px;
@@ -146,6 +150,13 @@
 </head>
 
 <body>
+
+  <nav>
+    <a href="scientia/scientia.html">Scientia</a>
+    <a href="vitalis/vitalis.html">Vitalis</a>
+    <a href="logos/logos.html">Logos</a>
+    <a href="sensus/sensus.html">Sensus</a>
+  </nav>
 
   <div class="wrap">
     <div class="card">

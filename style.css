@@ -308,11 +308,15 @@ header {
 }
 
 body {
-  padding-top: 170px; /* adjust to header height */
+  padding-top: 160px; /* adjust to header height */
 }
 
 body.home {
-  padding-top: 225px; /* adjust to header height */
+  padding-top: 220px; /* adjust to header height */
+}
+
+body.about {
+  padding-top: 160px; /* adjust to header height */
 }
 
 
@@ -444,6 +448,10 @@ nav a:hover::after {
 
 /* INDEX PAGE (UNIVERSE GRADIENT OVERRIDE) */
 body.home {
+  --theme: var(--universe-gradient);
+}
+
+body.about {
   --theme: var(--universe-gradient);
 }
 
@@ -844,6 +852,50 @@ header::after {
 
 
 body.home .card h3 {
+  color: transparent;
+
+  background: linear-gradient(
+    90deg,
+    #eaf4ff,
+    #cfe6ff,
+    #8fbfff,
+    #b9dcff,
+    #eaf4ff
+  );
+
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+ body.about .card h3 {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  font-weight: 700;
+  letter-spacing: 0.2px;
+
+  /* darker support layer = better contrast */
+  background: rgba(8, 10, 16, 0.78);
+
+  border: 1px solid rgba(160, 180, 255, 0.12);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+
+body.about .card h3 {
   color: transparent;
 
   background: linear-gradient(

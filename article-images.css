@@ -1,25 +1,25 @@
 /* individual articles */
-.article-sen_1 {
-  --article-image: url("images/articles/sen_1.jpg");
+.article-sen-A1 {
+  --article-image: url("articles/sensus/sen-A1/sen-A1.jpg");
 }
 
-.article-sen_2 {
-  --article-image: url("images/articles/sen_2.jpg");
+.article-sen-A2 {
+  --article-image: url("articles/sensus/sen-A2/sen-A2.jpg");
 }
 
-.article-sci_1 {
-  --article-image: url("images/articles/sci_1.jpg");
+.article-sci-A1 {
+  --article-image: url("articles/scientia/sci-A1/sci-A1.jpg");
 }
 
-.article-vit_1 {
-  --article-image: url("images/articles/vit_1.jpg");
+.article-vit-A1 {
+  --article-image: url("articles/vitalis/vit-A1/vit-A1.jpg");
 }
 
-.article-vit_2 {
-  --article-image: url("images/articles/vit_2.jpg");
+.article-vit-A2 {
+  --article-image: url("articles/vitalis/vit-A2/vit-A2.jpg");
 }
 
-.article-log_1 {
-  --article-image: url("images/articles/log_1.jpg");
+.article-log-A1 {
+  --article-image: url("articles/logos/log-A1/log-A1.jpg");
 }
 

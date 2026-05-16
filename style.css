@@ -1298,7 +1298,7 @@ body {
 
   background:
     linear-gradient(rgba(10, 12, 18, 0.78), rgba(10, 12, 18, 0.78)),
-    var(--article-image, url("images/archive-cards.jpg"));
+    var(--article-image, url("images/article-cards.jpg"));
   background-clip: padding-box;
   background-size: cover;
   background-position: center;
@@ -1576,7 +1576,7 @@ body {
 
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 
-  background-image: var(--concept-image, url("images/cards.jpg"));
+  background-image: var(--concept-image, url("images/concept-cards.jpg"));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2001,7 +2001,7 @@ body.light-mode .article-item {
       rgba(174, 180, 188, 0.904),
       rgba(115, 118, 121, 0.52)
     ),
-    var(--article-image, url("images/archive-cards.jpg"));
+    var(--article-image, url("images/article-cards.jpg"));
 }
 
 /* LIGHT MODE OVERRIDE */

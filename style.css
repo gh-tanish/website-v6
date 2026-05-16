@@ -1453,7 +1453,7 @@ body {
   /* BOXIER SHAPE */
   border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(40, 38, 38, 0.322);
   border: 1px solid rgba(160, 180, 255, 0.25);
 
   /* subtle depth instead of blur-heavy glass */
@@ -1613,7 +1613,9 @@ body {
 ========================= */
 
 .concept-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+
   padding: 20px 26px;
 
   border-radius: 28px;
@@ -1625,7 +1627,10 @@ body {
   text-decoration: none;
   color: #e6e6e6;
 
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 
   background-image: var(--concept-image, url("images/concept-cards.jpg"));
   background-size: cover;
@@ -1699,21 +1704,24 @@ body.sensus { --title-theme: var(--sensus-title); }
 
 
 .concept-code {
-  position: absolute !important;
-  top: 12px;
-  right: 12px;
-  z-index: 9999;
-
+  /* place below Discover button */
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  align-self: flex-end;
+
+  margin-top: 8px; /* controls gap below Discover */
+  margin-left: auto;
+
   padding: 5px 10px;
   border-radius: 999px;
 
-  /* FORCE VISIBILITY CONTRAST */
   background: var(--theme);
   background-size: 300% 300%;
   animation: gradientShift 7s ease infinite;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255,255,255,0.25);
 
   color: #070707;
 
@@ -1722,18 +1730,17 @@ body.sensus { --title-theme: var(--sensus-title); }
   letter-spacing: 1.5px;
 
   box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.45),
-    0 0 18px rgba(120, 140, 255, 0.35);
-
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+    0 8px 18px rgba(0,0,0,0.28),
+    0 0 12px rgba(120,140,255,0.22);
 
   pointer-events: none;
-
   overflow: hidden;
-  transform: translateZ(0);
+
+  position: relative;
+  z-index: 2;
 }
 
+/* glow layer */
 .concept-code::after {
   content: "";
   position: absolute;
@@ -1743,17 +1750,12 @@ body.sensus { --title-theme: var(--sensus-title); }
   background-size: 300% 300%;
   animation: gradientShift 6s ease infinite;
 
-  opacity: 0.22;
-  filter: blur(16px);
+  opacity: 0.16;
+  filter: blur(14px);
 
   border-radius: inherit;
-
   z-index: -1;
-
-  pointer-events: none;
-  transform: translateZ(0);
 }
-
 
 /* =========================
    CARD TEXT
@@ -1773,7 +1775,8 @@ body.sensus { --title-theme: var(--sensus-title); }
 .concept-card .read {
   display: inline-block;
 
-  margin-top: 14px;
+  margin-top: auto; /* pushes to bottom */
+  align-self: flex-start;
 
   font-size: 0.9rem;
   font-weight: 600;
@@ -1785,14 +1788,17 @@ body.sensus { --title-theme: var(--sensus-title); }
 
   border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(40, 38, 38, 0.322);
   border: 1px solid rgba(160, 180, 255, 0.25);
 
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 
   white-space: nowrap;
 
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 
   z-index: 2;
 }
@@ -1802,6 +1808,26 @@ body.sensus { --title-theme: var(--sensus-title); }
   box-shadow: 0 0 14px rgba(120,140,255,0.18);
 }
 
+.concept-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.concept-card .read {
+  order: 2;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.concept-code {
+  order: 3;
+  align-self: flex-end;
+
+  margin-top: 8px;
+
+  position: relative;
+  z-index: 2;
+}
 /* =========================
    CONCEPT HEADER
 ========================= */
@@ -1857,11 +1883,10 @@ body.sensus { --title-theme: var(--sensus-title); }
   z-index: 1;
 }
 /* ensure content stays above overlay */
-.concept-card > * {
+.concept-card > *:not(.concept-code) {
   position: relative;
   z-index: 2;
 }
-
 
 /* =========================
    THEME TOGGLE BUTTON
@@ -1989,7 +2014,6 @@ body.light-mode .article-item {
 
 /* TEXT */
 body.light-mode p,
-body.light-mode span,
 body.light-mode .hero-description {
   color: rgba(30,40,60,0.72);
 }

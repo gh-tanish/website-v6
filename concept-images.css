@@ -1,3 +1,74 @@
+/* SCIENTIA CONCEPTS */
+
+.concept-sci-C1 {
+  --concept-image: url("concepts-scientia/sci-C1/sci-C1.jpg");
+}
+
+.concept-sci-C2 {
+  --concept-image: url("concepts-scientia/sci-C2/sci-C2.jpg");
+}
+
+.concept-sci-C3 {
+  --concept-image: url("concepts-scientia/sci-C3/sci-C3.jpg");
+}
+
+.concept-sci-C4 {
+  --concept-image: url("concepts-scientia/sci-C4/sci-C4.jpg");
+}
+
+
+/* VITALIS CONCEPTS */
+
 .concept-vit-C1 {
   --concept-image: url("concepts-vitalis/vit-C1/vit-C1.jpg");
+}
+
+.concept-vit-C2 {
+  --concept-image: url("concepts-vitalis/vit-C2/vit-C2.jpg");
+}
+
+.concept-vit-C3 {
+  --concept-image: url("concepts-vitalis/vit-C3/vit-C3.jpg");
+}
+
+.concept-vit-C4 {
+  --concept-image: url("concepts-vitalis/vit-C4/vit-C4.jpg");
+}
+
+
+/* LOGOS CONCEPTS */
+
+.concept-log-C1 {
+  --concept-image: url("concepts-logos/log-C1/log-C1.jpg");
+}
+
+.concept-log-C2 {
+  --concept-image: url("concepts-logos/log-C2/log-C2.jpg");
+}
+
+.concept-log-C3 {
+  --concept-image: url("concepts-logos/log-C3/log-C3.jpg");
+}
+
+.concept-log-C4 {
+  --concept-image: url("concepts-logos/log-C4/log-C4.jpg");
+}
+
+
+/* SENSUS CONCEPTS */
+
+.concept-sen-C1 {
+  --concept-image: url("concepts-sensus/sen-C1/sen-C1.jpg");
+}
+
+.concept-sen-C2 {
+  --concept-image: url("concepts-sensus/sen-C2/sen-C2.jpg");
+}
+
+.concept-sen-C3 {
+  --concept-image: url("concepts-sensus/sen-C3/sen-C3.jpg");
+}
+
+.concept-sen-C4 {
+  --concept-image: url("concepts-sensus/sen-C4/sen-C4.jpg");
 }

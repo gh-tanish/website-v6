@@ -66,17 +66,23 @@
     }
 
     /* MAIN WRAP */
-    .wrap {
-      flex: 1;
+  .wrap {
+    flex: 1;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;  /* <-- change this */
-      align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-      padding: 80px 20px; /* reduce top-heavy padding */
-      text-align: center;
-    }
+    text-align: center;
+
+    /* key fix for iPhone centering */
+    min-height: 100dvh;
+    padding: calc(80px + env(safe-area-inset-top)) 20px
+            calc(80px + env(safe-area-inset-bottom));
+
+    transform: translateY(-2vh);
+  }
 
     /* CARD */
     .card {
